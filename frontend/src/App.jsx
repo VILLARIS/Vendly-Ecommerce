@@ -5,6 +5,7 @@ import DealsSection from "./components/DealsSection/DealsSection";
 import MarketplaceSection from "./components/MarketplaceSection/MarketplaceSection";
 import PopularSellers from "./components/PopularSellers/PopularSellers";
 import CallToActionBanner from "./components/CallToActionBanner/CallToActionBanner";
+import Footer from "./components/Footer/Footer";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
       <MarketplaceSection />
       <PopularSellers />
       <CallToActionBanner />
+      <Footer />
     </>
   )
 }

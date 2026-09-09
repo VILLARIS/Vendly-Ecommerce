@@ -1,8 +1,8 @@
 function CallToActionBanner() {
   return (
     <div className="bg-white py-16">
-      <div className="mx-auto max-w-7xl px-4">
-        <div className="flex flex-col items-center justify-between gap-6 rounded-3xl bg-[#0f172a] p-10 md:flex-row md:p-12">
+      <div className="w-full bg-[#0f172a]">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 py-10 md:flex-row md:py-12">
           {/* Left - Texts */}
           <div className="flex flex-col gap-2 text-center md:text-left">
             <h3 className="text-3xl font-bold text-white">
