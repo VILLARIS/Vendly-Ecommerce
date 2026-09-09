@@ -3,6 +3,7 @@ import Hero from "./components/Hero/Hero";
 import PopularCategories from "./components/PopularCategories/PopularCategories";
 import DealsSection from "./components/DealsSection/DealsSection";
 import MarketplaceSection from "./components/MarketplaceSection/MarketplaceSection";
+import PopularSellers from "./components/PopularSellers/PopularSellers";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <PopularCategories />
       <DealsSection />
       <MarketplaceSection />
+      <PopularSellers />
     </>
   )
 }
