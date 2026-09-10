@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { useWishlist } from "../../context/useWishlist";
 import Logo from "../../assets/Navbar/Logo.jpg";
 import { Search, Heart, ShoppingCart, User } from "lucide-react";
 
@@ -15,17 +17,19 @@ const categories = [
 ];
 
 function Navbar() {
+  const { count } = useWishlist();
+
   return (
     <nav className="bg-white w-full shadow-sm sticky top-0 z-50">
       {/* Level 1 - Top Bar */}
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-2 gap-4">
         {/* Left - Brand */}
-        <div className="flex items-center gap-2 shrink-0">
+        <Link to="/" className="flex items-center gap-2 shrink-0">
           <img src={Logo} alt="Vendly Logo" className="h-10 w-10 object-contain" />
           <h1 className="text-2xl font-extrabold tracking-tight text-slate-900">
             VENDLY
           </h1>
-        </div>
+        </Link>
 
         {/* Center - Search Bar */}
         <div className="flex flex-1 max-w-2xl mx-4">
@@ -43,18 +47,31 @@ function Navbar() {
 
         {/* Right - Actions */}
         <div className="flex items-center gap-4 shrink-0">
-          <button className="text-gray-600 hover:text-purple-600 transition-colors" title="Favorites">
-            <Heart className="h-6 w-6" />
-          </button>
+          <Link
+            to="/account"
+            className="relative text-gray-600 hover:text-purple-600 transition-colors"
+            title="Wishlist"
+          >
+            <Heart className={`h-6 w-6 ${count > 0 ? "fill-purple-600 text-purple-600" : ""}`} />
+            {count > 0 && (
+              <span className="absolute -right-1.5 -top-1.5 grid size-4 place-items-center rounded-full bg-purple-600 text-[10px] font-bold text-white">
+                {count}
+              </span>
+            )}
+          </Link>
 
           <button className="text-gray-600 hover:text-purple-600 transition-colors" title="Cart">
             <ShoppingCart className="h-6 w-6" />
           </button>
 
-          <button className="flex items-center gap-1.5 text-gray-600 hover:text-purple-600 transition-colors" title="Account">
+          <Link
+            to="/account"
+            className="flex items-center gap-1.5 text-gray-600 hover:text-purple-600 transition-colors"
+            title="Account"
+          >
             <User className="h-6 w-6" />
             <span className="text-sm font-medium text-gray-600 hidden sm:inline">Account</span>
-          </button>
+          </Link>
 
           <button className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 font-semibold text-sm px-4 py-2 rounded-lg transition-colors whitespace-nowrap">
             Sell on Vendly

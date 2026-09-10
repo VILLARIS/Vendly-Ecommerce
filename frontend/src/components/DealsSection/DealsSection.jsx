@@ -1,7 +1,9 @@
 import { Star, Heart } from "lucide-react";
+import { useWishlist } from "../../context/useWishlist";
 
 const deals = [
   {
+    id: "deal-soundcore-pro",
     store: "TechWorld",
     title: "SoundCore Pro Wireless Headphones",
     rating: 4.5,
@@ -14,6 +16,7 @@ const deals = [
       "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=60",
   },
   {
+    id: "deal-samsung-qled",
     store: "TechWorld",
     title: 'Samsung 65" 4K QLED Smart TV',
     rating: 4.8,
@@ -26,6 +29,7 @@ const deals = [
       "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=600&q=60",
   },
   {
+    id: "deal-macbook-air-m3",
     store: "TechWorld",
     title: 'Apple MacBook Air M3 13"',
     rating: 4.9,
@@ -38,6 +42,7 @@ const deals = [
       "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=60",
   },
   {
+    id: "deal-sony-wh1000xm5",
     store: "TechWorld",
     title: "Sony WH-1000XM5 Headphones",
     rating: 4.7,
@@ -50,6 +55,7 @@ const deals = [
       "https://images.unsplash.com/photo-1618366712010-e4bc9fdb21de?auto=format&fit=crop&w=600&q=60",
   },
   {
+    id: "deal-nike-airmax-270",
     store: "UrbanWear",
     title: "Nike Air Max 270 Sneakers",
     rating: 4.6,
@@ -62,6 +68,7 @@ const deals = [
       "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=60",
   },
   {
+    id: "deal-linen-pillow",
     store: "HomeNest",
     title: "Minimalist Linen Throw Pillow Set",
     rating: 4.4,
@@ -78,6 +85,8 @@ const deals = [
 const formatPrice = (value) => `$${Number(value).toFixed(2)}`;
 
 function DealsSection() {
+  const { isFavorite, toggleItem } = useWishlist();
+
   return (
     <section className="bg-gray-50 py-12">
       <div className="mx-auto max-w-7xl px-4">
@@ -103,7 +112,7 @@ function DealsSection() {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
           {deals.map((deal) => (
             <a
-              key={deal.title}
+              key={deal.id}
               href="#"
               className="flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white transition-shadow hover:shadow-md"
             >
@@ -119,10 +128,27 @@ function DealsSection() {
                   {deal.discount}
                 </span>
                 <button
-                  className="absolute right-2 top-2 grid size-8 place-items-center rounded-full bg-white text-gray-400 shadow-sm transition-colors hover:text-purple-600"
-                  title="Add to favorites"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleItem({
+                      id: deal.id,
+                      title: deal.title,
+                      brand: deal.store,
+                      price: deal.price,
+                      image: deal.image,
+                    });
+                  }}
+                  className={`absolute right-2 top-2 grid size-8 place-items-center rounded-full bg-white shadow-sm transition-all ${
+                    isFavorite(deal.id)
+                      ? "text-red-500"
+                      : "text-gray-400 hover:text-red-500"
+                  }`}
+                  title={isFavorite(deal.id) ? "Remove from favorites" : "Add to favorites"}
                 >
-                  <Heart className="h-4 w-4" />
+                  <Heart
+                    className={`h-4 w-4 ${isFavorite(deal.id) ? "fill-red-500" : ""}`}
+                  />
                 </button>
               </div>
 

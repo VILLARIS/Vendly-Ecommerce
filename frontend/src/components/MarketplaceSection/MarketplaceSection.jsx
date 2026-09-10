@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Star, Truck, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, Truck, Heart, ChevronLeft, ChevronRight } from "lucide-react";
+import { useWishlist } from "../../context/useWishlist";
 
 const formatPrice = (value) => {
   const [whole, cents] = Number(value).toFixed(2).split(".");
@@ -16,6 +17,7 @@ function MarketplaceSection() {
   const [products, setProducts] = useState([]);
   const [status, setStatus] = useState("loading");
   const scrollRef = useRef(null);
+  const { isFavorite, toggleItem } = useWishlist();
 
   useEffect(() => {
     let cancelled = false;
@@ -118,6 +120,29 @@ function MarketplaceSection() {
                           loading="lazy"
                           className="h-full w-full object-contain mix-blend-multiply transition-transform duration-500 hover:scale-105"
                         />
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            toggleItem({
+                              id: product.id,
+                              title: product.title,
+                              brand: product.brand,
+                              price: product.price,
+                              image: product.thumbnail,
+                            });
+                          }}
+                          className={`absolute right-2 top-2 grid size-7 place-items-center rounded-full bg-white shadow-sm transition-all ${
+                            isFavorite(product.id)
+                              ? "text-red-500"
+                              : "text-gray-400 hover:text-red-500"
+                          }`}
+                          title={isFavorite(product.id) ? "Remove from wishlist" : "Add to wishlist"}
+                        >
+                          <Heart
+                            className={`h-3.5 w-3.5 ${isFavorite(product.id) ? "fill-red-500" : ""}`}
+                          />
+                        </button>
                       </div>
 
                       {/* Body */}
