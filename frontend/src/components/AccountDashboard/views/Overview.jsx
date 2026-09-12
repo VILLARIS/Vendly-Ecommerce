@@ -1,0 +1,102 @@
+import { Star } from "lucide-react";
+import { useWishlist } from "../../../context/useWishlist";
+
+const stats = [
+  { value: "4", label: "Orders" },
+  { value: null, label: "Wishlist items" },
+  { value: "2", label: "Reviews left" },
+  { value: "2", label: "Saved addresses" },
+];
+
+const orders = [
+  {
+    key: "vd-48291",
+    title: "SoundCore Pro Wireless Headphones",
+    meta: "VD-48291 · Sep 5, 2026",
+    status: "Processing",
+    badgeClass: "bg-orange-100 text-orange-700",
+    price: "$129.99",
+    image:
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=200&q=60",
+  },
+  {
+    key: "vd-46102",
+    title: "Nike Air Max 270 Sneakers",
+    meta: "VD-46102 · Aug 28, 2026",
+    status: "Delivered",
+    badgeClass: "bg-green-100 text-green-700",
+    price: "$89.99",
+    image:
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=200&q=60",
+  },
+];
+
+function Overview() {
+  const { count } = useWishlist();
+
+  return (
+    <div>
+      <h2 className="mb-6 text-2xl font-bold text-gray-900">Account overview</h2>
+
+      {/* Stats Grid */}
+      <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-4">
+        {stats.map((stat) => (
+          <div
+            key={stat.label}
+            className="flex flex-col items-center justify-center rounded-xl border border-gray-200 bg-white p-6 text-center"
+          >
+            <p className="text-3xl font-bold text-gray-900">
+              {stat.label === "Wishlist items" ? count : stat.value}
+            </p>
+            <p className="mt-1 text-sm text-gray-500">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Recent Orders */}
+      <div className="overflow-hidden rounded-xl border border-gray-200 bg-white">
+        <div className="flex items-center justify-between border-b border-gray-200 p-4">
+          <p className="font-semibold text-gray-900">Recent orders</p>
+          <button className="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-700">
+            View all
+          </button>
+        </div>
+
+        {orders.map((order) => (
+          <div
+            key={order.key}
+            className="flex items-center justify-between border-b border-gray-100 p-4 last:border-b-0"
+          >
+            <div className="flex items-center gap-3">
+              <img
+                src={order.image}
+                alt={order.title}
+                className="h-12 w-12 rounded-lg object-cover"
+              />
+              <div>
+                <p className="font-medium text-gray-900">{order.title}</p>
+                <p className="text-sm text-gray-500">{order.meta}</p>
+              </div>
+            </div>
+
+            <div className="flex flex-col items-end gap-1">
+              <span
+                className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${order.badgeClass}`}
+              >
+                {order.status}
+              </span>
+              <span className="text-sm font-bold text-gray-900">{order.price}</span>
+            </div>
+          </div>
+        ))}
+
+        <div className="flex items-center gap-1 px-4 py-3 text-xs text-gray-400">
+          <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+          Rated 4.8 across {orders.length} recent orders
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Overview;
