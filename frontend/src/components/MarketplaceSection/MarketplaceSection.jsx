@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { Star, Truck, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import { useWishlist } from "../../context/useWishlist";
 
@@ -108,8 +109,8 @@ function MarketplaceSection() {
                       animationDelay: `${Math.min(i * 60, 900)}ms`,
                     }}
                   >
-                    <a
-                      href="#"
+                    <Link
+                      to={`/product/${product.id}`}
                       className="flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                     >
                       {/* Image */}
@@ -178,7 +179,7 @@ function MarketplaceSection() {
                           {product.title}
                         </p>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                 ))}
             </div>

@@ -9,6 +9,8 @@ import PopularSellers from "./components/PopularSellers/PopularSellers";
 import CallToActionBanner from "./components/CallToActionBanner/CallToActionBanner";
 import Footer from "./components/Footer/Footer";
 import AccountDashboard from "./components/AccountDashboard/AccountDashboard";
+import ProductDetails from "./components/ProductDetails/ProductDetails";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 function Home() {
   return (
@@ -28,6 +30,7 @@ function App() {
   return (
     <WishlistProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -41,6 +44,15 @@ function App() {
             }
           />
           <Route path="*" element={<Home />} />
+          <Route
+            path="/product/:id"
+            element={
+              <>
+                <ProductDetails />
+                <Footer />
+              </>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </WishlistProvider>

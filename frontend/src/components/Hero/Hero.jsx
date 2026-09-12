@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Search,
   Package,
@@ -275,7 +276,10 @@ function Hero() {
           </div>
 
           {/* Card 1 - Headphones */}
-          <div className="absolute right-8 top-8 z-10 w-60 rotate-3 rounded-2xl bg-white p-3 shadow-2xl shadow-black/40 transition-transform duration-300 hover:scale-[1.04]">
+          <Link
+            to={`/product/${products.headphones.id ?? "hero-headphones"}`}
+            className="absolute right-8 top-8 z-10 block w-60 rotate-3 rounded-2xl bg-white p-3 shadow-2xl shadow-black/40 transition-transform duration-300 hover:scale-[1.04]"
+          >
             <div className="relative">
               <ProductImage
                 src={products.headphones.thumbnail}
@@ -284,15 +288,17 @@ function Hero() {
                 className="h-44 rounded-xl"
               />
               <button
-                onClick={() =>
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
                   toggleItem({
                     id: "hero-headphones",
                     title: products.headphones.title,
                     brand: products.headphones.brand,
                     price: products.headphones.price,
                     image: products.headphones.thumbnail || products.headphones.illustration,
-                  })
-                }
+                  });
+                }}
                 className={`absolute right-2 top-2 grid size-7 place-items-center rounded-full bg-white shadow-md transition-all ${
                   isFavorite("hero-headphones")
                     ? "text-red-500"
@@ -318,10 +324,13 @@ function Hero() {
             <p className="mt-1 text-base font-extrabold text-purple-700">
               {formatPrice(products.headphones.price)}
             </p>
-          </div>
+          </Link>
 
           {/* Card 2 - Sneakers */}
-          <div className="absolute left-2 top-44 z-20 w-60 -rotate-6 rounded-2xl bg-white p-3 shadow-2xl shadow-black/40 transition-transform duration-300 hover:scale-[1.04]">
+          <Link
+            to={`/product/${products.sneakers.id ?? "hero-sneakers"}`}
+            className="absolute left-2 top-44 z-20 block w-60 -rotate-6 rounded-2xl bg-white p-3 shadow-2xl shadow-black/40 transition-transform duration-300 hover:scale-[1.04]"
+          >
             <div className="relative">
               <ProductImage
                 src={products.sneakers.thumbnail}
@@ -330,15 +339,17 @@ function Hero() {
                 className="h-40 rounded-xl"
               />
               <button
-                onClick={() =>
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
                   toggleItem({
                     id: "hero-sneakers",
                     title: products.sneakers.title,
                     brand: products.sneakers.brand,
                     price: products.sneakers.price,
                     image: products.sneakers.thumbnail || products.sneakers.illustration,
-                  })
-                }
+                  });
+                }}
                 className={`absolute right-2 top-2 grid size-7 place-items-center rounded-full bg-white shadow-md transition-all ${
                   isFavorite("hero-sneakers")
                     ? "text-red-500"
@@ -358,10 +369,13 @@ function Hero() {
             <p className="mt-1 text-base font-extrabold text-purple-700">
               {formatPrice(products.sneakers.price)}
             </p>
-          </div>
+          </Link>
 
           {/* Card 3 - Smart Speaker / Tech */}
-          <div className="absolute bottom-0 left-16 z-30 w-60 rotate-2 rounded-2xl bg-white p-3 shadow-2xl shadow-black/40 transition-transform duration-300 hover:scale-[1.04]">
+          <Link
+            to={`/product/${products.tech.id ?? "hero-tech"}`}
+            className="absolute bottom-0 left-16 z-30 block w-60 rotate-2 rounded-2xl bg-white p-3 shadow-2xl shadow-black/40 transition-transform duration-300 hover:scale-[1.04]"
+          >
             <div className="relative">
               <ProductImage
                 src={products.tech.thumbnail}
@@ -370,15 +384,17 @@ function Hero() {
                 className="h-40 rounded-xl"
               />
               <button
-                onClick={() =>
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
                   toggleItem({
                     id: "hero-tech",
                     title: products.tech.title,
                     brand: products.tech.brand,
                     price: products.tech.price,
                     image: products.tech.thumbnail || products.tech.illustration,
-                  })
-                }
+                  });
+                }}
                 className={`absolute right-2 top-2 grid size-7 place-items-center rounded-full bg-white shadow-md transition-all ${
                   isFavorite("hero-tech")
                     ? "text-red-500"
@@ -398,7 +414,7 @@ function Hero() {
             <p className="mt-1 text-base font-extrabold text-purple-700">
               {formatPrice(products.tech.price)}
             </p>
-          </div>
+          </Link>
         </div>
       </div>
     </section>
