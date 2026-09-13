@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { WishlistProvider } from "./context/WishlistProvider";
+import CartProvider from "./context/CartProvider";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import PopularCategories from "./components/PopularCategories/PopularCategories";
@@ -11,6 +12,7 @@ import Footer from "./components/Footer/Footer";
 import AccountDashboard from "./components/AccountDashboard/AccountDashboard";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import CartPanel from "./components/CartPanel/CartPanel";
 
 function Home() {
   return (
@@ -29,32 +31,35 @@ function Home() {
 function App() {
   return (
     <WishlistProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/account"
-            element={
-              <>
-                <AccountDashboard />
-                <Footer />
-              </>
-            }
-          />
-          <Route path="*" element={<Home />} />
-          <Route
-            path="/product/:id"
-            element={
-              <>
-                <ProductDetails />
-                <Footer />
-              </>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <Navbar />
+          <CartPanel />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/account"
+              element={
+                <>
+                  <AccountDashboard />
+                  <Footer />
+                </>
+              }
+            />
+            <Route path="*" element={<Home />} />
+            <Route
+              path="/product/:id"
+              element={
+                <>
+                  <ProductDetails />
+                  <Footer />
+                </>
+              }
+            />
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
     </WishlistProvider>
   );
 }

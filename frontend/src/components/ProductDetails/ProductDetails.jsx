@@ -13,6 +13,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { useWishlist } from "../../context/useWishlist";
+import { useCart } from "../../context/useCart";
 import { localDeals } from "../../data/products";
 
 const formatPrice = (value) => `$${Number(value).toFixed(2)}`;
@@ -176,6 +177,7 @@ const shippingOptions = [
 function ProductDetails() {
   const { id } = useParams();
   const { isFavorite, toggleItem } = useWishlist();
+  const { addItem } = useCart();
   const [product, setProduct] = useState(null);
   const [selectedImg, setSelectedImg] = useState(null);
   const [quantity, setQuantity] = useState(1);
@@ -404,7 +406,21 @@ function ProductDetails() {
                   </button>
                 </div>
 
-                <button className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-indigo-600 py-3 text-center font-semibold text-white transition-colors hover:bg-indigo-700">
+                <button
+                  onClick={() =>
+                    addItem(
+                      {
+                        id: product.id,
+                        title: product.title,
+                        brand: product.brand,
+                        price: product.price,
+                        image: product.image,
+                      },
+                      quantity,
+                    )
+                  }
+                  className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-indigo-600 py-3 text-center font-semibold text-white transition-colors hover:bg-indigo-700"
+                >
                   <ShoppingCart className="h-5 w-5" />
                   Add to cart
                 </button>
@@ -649,6 +665,13 @@ function ProductDetails() {
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
+                      addItem({
+                        id: item.id,
+                        title: item.title,
+                        brand: item.store,
+                        price: item.price,
+                        image: item.image,
+                      });
                     }}
                     className="mt-3 w-full rounded-lg bg-purple-600 py-2 text-sm font-semibold text-white transition-colors hover:bg-purple-700"
                   >

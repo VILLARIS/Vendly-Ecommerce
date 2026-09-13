@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useWishlist } from "../../context/useWishlist";
+import { useCart } from "../../context/useCart";
 import Logo from "../../assets/Navbar/Logo.jpg";
 import { Search, Heart, ShoppingCart, User } from "lucide-react";
 
@@ -18,6 +19,7 @@ const categories = [
 
 function Navbar() {
   const { count } = useWishlist();
+  const { count: cartCount, openCart } = useCart();
 
   return (
     <nav className="bg-white w-full shadow-sm sticky top-0 z-50">
@@ -60,8 +62,17 @@ function Navbar() {
             )}
           </Link>
 
-          <button className="text-gray-600 hover:text-purple-600 transition-colors" title="Cart">
+          <button
+            onClick={openCart}
+            className="relative text-gray-600 hover:text-purple-600 transition-colors"
+            title="Cart"
+          >
             <ShoppingCart className="h-6 w-6" />
+            {cartCount > 0 && (
+              <span className="absolute -right-1.5 -top-1.5 grid size-4 place-items-center rounded-full bg-purple-600 text-[10px] font-bold text-white">
+                {cartCount}
+              </span>
+            )}
           </button>
 
           <Link

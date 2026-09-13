@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { Star, Heart } from "lucide-react";
 import { useWishlist } from "../../context/useWishlist";
+import { useCart } from "../../context/useCart";
 import { localDeals } from "../../data/products";
 
 const formatPrice = (value) => `$${Number(value).toFixed(2)}`;
 
 function DealsSection() {
   const { isFavorite, toggleItem } = useWishlist();
+  const { addItem } = useCart();
 
   return (
     <section className="bg-gray-50 py-12">
@@ -120,6 +122,13 @@ function DealsSection() {
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
+                    addItem({
+                      id: deal.id,
+                      title: deal.title,
+                      brand: deal.store,
+                      price: deal.price,
+                      image: deal.image,
+                    });
                   }}
                   className="mt-3 w-full rounded-lg bg-purple-600 py-2 text-sm font-semibold text-white transition-colors hover:bg-purple-700"
                 >
