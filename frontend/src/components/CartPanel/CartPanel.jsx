@@ -175,10 +175,14 @@ function CartPanel() {
                   >
                     Continue shopping
                   </button>
-                  <button className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-indigo-600 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-700">
+                  <Link
+                    to="/checkout"
+                    onClick={closeCart}
+                    className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-indigo-600 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
+                  >
                     Checkout
                     <ArrowRight className="h-4 w-4" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </>

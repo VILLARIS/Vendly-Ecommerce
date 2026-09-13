@@ -13,6 +13,7 @@ import AccountDashboard from "./components/AccountDashboard/AccountDashboard";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import CartPanel from "./components/CartPanel/CartPanel";
+import Checkout from "./components/Checkout/Checkout";
 
 function Home() {
   return (
@@ -53,6 +54,15 @@ function App() {
               element={
                 <>
                   <ProductDetails />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/checkout"
+              element={
+                <>
+                  <Checkout />
                   <Footer />
                 </>
               }
