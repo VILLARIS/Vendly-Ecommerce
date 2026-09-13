@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   LayoutDashboard,
   Package,
@@ -22,12 +22,18 @@ const menuItems = [
 ];
 
 function AccountDashboard() {
-  const [active, setActive] = useState("overview");
+  const { tab } = useParams();
+  const navigate = useNavigate();
+  const active = tab || "overview";
+
+  const selectTab = (key) => {
+    navigate(key === "overview" ? "/account" : `/account/${key}`);
+  };
 
   const renderView = () => {
     switch (active) {
       case "overview":
-        return <Overview onNavigate={setActive} />;
+        return <Overview onNavigate={selectTab} />;
       case "orders":
         return <Orders />;
       case "addresses":
@@ -66,7 +72,7 @@ function AccountDashboard() {
                 return (
                   <button
                     key={item.key}
-                    onClick={() => setActive(item.key)}
+                    onClick={() => selectTab(item.key)}
                     className={
                       isActive
                         ? "flex items-center gap-3 rounded-lg bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-700"

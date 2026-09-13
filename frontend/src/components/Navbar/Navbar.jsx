@@ -50,7 +50,7 @@ function Navbar() {
         {/* Right - Actions */}
         <div className="flex items-center gap-4 shrink-0">
           <Link
-            to="/account"
+            to="/account/wishlist"
             className="relative text-gray-600 hover:text-purple-600 transition-colors"
             title="Wishlist"
           >

@@ -48,6 +48,15 @@ function App() {
                 </>
               }
             />
+            <Route
+              path="/account/:tab"
+              element={
+                <>
+                  <AccountDashboard />
+                  <Footer />
+                </>
+              }
+            />
             <Route path="*" element={<Home />} />
             <Route
               path="/product/:id"
