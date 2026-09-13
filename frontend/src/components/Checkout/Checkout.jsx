@@ -19,6 +19,7 @@ const money = (value) => `$${Number(value).toFixed(2)}`;
 
 const ADDRESSES_KEY = "vendly:addresses";
 const METHODS_KEY = "vendly:payment-methods";
+const ORDERS_KEY = "vendly:orders";
 
 const defaultAddresses = [
   {
@@ -186,8 +187,26 @@ function Checkout() {
       return;
     }
 
+    const orderId = `VL-${Math.floor(100000 + Math.random() * 900000)}`;
+    const orderEntry = {
+      id: orderId,
+      date: new Date().toISOString(),
+      status: "Processing",
+      itemCount: count,
+      total,
+      items: items.map((item) => ({ ...item })),
+    };
+
+    try {
+      const raw = localStorage.getItem(ORDERS_KEY);
+      const saved = raw ? JSON.parse(raw) : [];
+      localStorage.setItem(ORDERS_KEY, JSON.stringify([orderEntry, ...saved]));
+    } catch {
+      /* storage unavailable */
+    }
+
     setOrder({
-      id: `VL-${Math.floor(100000 + Math.random() * 900000)}`,
+      id: orderId,
       total,
       itemCount: count,
       email: contact.email.trim(),

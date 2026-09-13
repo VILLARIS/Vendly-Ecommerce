@@ -8,10 +8,10 @@ import {
   LogOut,
 } from "lucide-react";
 import Overview from "./views/Overview";
+import Orders from "./views/Orders";
 import Wishlist from "./views/Wishlist";
 import Addresses from "./views/Addresses";
 import PaymentMethods from "./views/PaymentMethods";
-import EmptyView from "./views/EmptyView";
 
 const menuItems = [
   { key: "overview", label: "Overview", icon: LayoutDashboard },
@@ -27,21 +27,15 @@ function AccountDashboard() {
   const renderView = () => {
     switch (active) {
       case "overview":
-        return <Overview />;
-      case "wishlist":
-        return <Wishlist />;
+        return <Overview onNavigate={setActive} />;
+      case "orders":
+        return <Orders />;
       case "addresses":
         return <Addresses />;
       case "payments":
         return <PaymentMethods />;
-      case "orders":
-        return (
-          <EmptyView
-            icon={Package}
-            title="You don't have any orders yet"
-            subtitle="When you place an order it will show up here."
-          />
-        );
+      case "wishlist":
+        return <Wishlist />;
       default:
         return <Overview />;
     }

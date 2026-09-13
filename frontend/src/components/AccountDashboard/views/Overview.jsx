@@ -1,14 +1,12 @@
+import { useState } from "react";
 import { Star } from "lucide-react";
 import { useWishlist } from "../../../context/useWishlist";
 
-const stats = [
-  { value: "4", label: "Orders" },
-  { value: null, label: "Wishlist items" },
-  { value: "2", label: "Reviews left" },
-  { value: "2", label: "Saved addresses" },
-];
+const ORDERS_KEY = "vendly:orders";
+const ADDRESSES_KEY = "vendly:addresses";
+const METHODS_KEY = "vendly:payment-methods";
 
-const orders = [
+const mockOrders = [
   {
     key: "vd-48291",
     title: "SoundCore Pro Wireless Headphones",
@@ -31,8 +29,66 @@ const orders = [
   },
 ];
 
-function Overview() {
+const readStore = (key, fallback) => {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  } catch {
+    return fallback;
+  }
+};
+
+const money = (value) => `$${Number(value).toFixed(2)}`;
+
+const statusClass = {
+  Processing: "bg-orange-100 text-orange-700",
+  Shipped: "bg-blue-100 text-blue-700",
+  Delivered: "bg-green-100 text-green-700",
+};
+
+const formatDate = (iso) => {
+  try {
+    return new Date(iso).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+  } catch {
+    return "";
+  }
+};
+
+function Overview({ onNavigate }) {
   const { count } = useWishlist();
+
+  const [orders] = useState(() => readStore(ORDERS_KEY, []));
+  const [addressCount] = useState(() => readStore(ADDRESSES_KEY, []).length);
+  const [methodsCount] = useState(() => readStore(METHODS_KEY, []).length);
+
+  const displayedOrders = orders.length > 0 ? orders : mockOrders;
+
+  const recentOrders = displayedOrders.map((order) => {
+    if (order.items?.length) {
+      return {
+        key: order.key ?? order.id,
+        title: order.items[0].title,
+        image: order.items[0].image,
+        meta: `${order.id} · ${formatDate(order.date)}`,
+        status: order.status,
+        badgeClass: statusClass[order.status] ?? "bg-orange-100 text-orange-700",
+        price: money(order.total),
+        extraCount: order.items.length - 1,
+      };
+    }
+    return order;
+  });
+
+  const stats = [
+    { value: displayedOrders.length, label: "Orders" },
+    { value: null, label: "Wishlist items" },
+    { value: methodsCount, label: "Payment methods" },
+    { value: addressCount, label: "Saved addresses" },
+  ];
 
   return (
     <div>
@@ -57,12 +113,15 @@ function Overview() {
       <div className="overflow-hidden rounded-xl border border-gray-200 bg-white">
         <div className="flex items-center justify-between border-b border-gray-200 p-4">
           <p className="font-semibold text-gray-900">Recent orders</p>
-          <button className="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-700">
+          <button
+            onClick={() => onNavigate && onNavigate("orders")}
+            className="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-700"
+          >
             View all
           </button>
         </div>
 
-        {orders.map((order) => (
+        {recentOrders.map((order) => (
           <div
             key={order.key}
             className="flex items-center justify-between border-b border-gray-100 p-4 last:border-b-0"
@@ -74,7 +133,14 @@ function Overview() {
                 className="h-12 w-12 rounded-lg object-cover"
               />
               <div>
-                <p className="font-medium text-gray-900">{order.title}</p>
+                <p className="font-medium text-gray-900">
+                  {order.title}
+                  {order.extraCount > 0 && (
+                    <span className="ml-1 text-sm font-normal text-gray-400">
+                      +{order.extraCount} more
+                    </span>
+                  )}
+                </p>
                 <p className="text-sm text-gray-500">{order.meta}</p>
               </div>
             </div>
@@ -92,7 +158,7 @@ function Overview() {
 
         <div className="flex items-center gap-1 px-4 py-3 text-xs text-gray-400">
           <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
-          Rated 4.8 across {orders.length} recent orders
+          Rated 4.8 across {recentOrders.length} recent orders
         </div>
       </div>
     </div>
