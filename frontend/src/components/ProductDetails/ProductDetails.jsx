@@ -15,6 +15,7 @@ import {
 import { useWishlist } from "../../context/useWishlist";
 import { useCart } from "../../context/useCart";
 import { localDeals } from "../../data/products";
+import { departmentOfCategory } from "../../data/categories";
 
 const formatPrice = (value) => `$${Number(value).toFixed(2)}`;
 
@@ -30,6 +31,7 @@ const mapLocalDeal = (deal) => ({
   id: deal.id,
   title: deal.title,
   brand: deal.store,
+  category: deal.category,
   price: Number(deal.price),
   oldPrice: deal.oldPrice != null ? Number(deal.oldPrice) : null,
   discount: parseInt((deal.discount || "").replace(/\D/g, ""), 10) || null,
@@ -53,6 +55,7 @@ const mapDummyProduct = (product) => {
     id: product.id,
     title: product.title,
     brand: product.brand || "TechWorld",
+    category: product.category,
     price,
     oldPrice,
     discount,
@@ -243,10 +246,22 @@ function ProductDetails() {
             Home
           </Link>
           <span className="text-slate-400">/</span>
-          <a href="#" className="text-slate-500 transition-colors hover:text-indigo-600">
-            Electronics
-          </a>
-          <span className="text-slate-400">/</span>
+          {(() => {
+            const dept = product.category
+              ? departmentOfCategory(product.category)
+              : null;
+            return dept ? (
+              <>
+                <Link
+                  to={`/browse/${dept.slug}`}
+                  className="text-slate-500 transition-colors hover:text-indigo-600"
+                >
+                  {dept.name}
+                </Link>
+                <span className="text-slate-400">/</span>
+              </>
+            ) : null;
+          })()}
           <span className="truncate text-slate-900">{product.title}</span>
         </nav>
 

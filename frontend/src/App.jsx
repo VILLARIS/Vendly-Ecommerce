@@ -14,6 +14,7 @@ import ProductDetails from "./components/ProductDetails/ProductDetails";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import CartPanel from "./components/CartPanel/CartPanel";
 import Checkout from "./components/Checkout/Checkout";
+import CategoryPage from "./components/CategoryPage/CategoryPage";
 
 function Home() {
   return (
@@ -58,6 +59,15 @@ function App() {
               }
             />
             <Route path="*" element={<Home />} />
+            <Route
+              path="/browse/:slug"
+              element={
+                <>
+                  <CategoryPage />
+                  <Footer />
+                </>
+              }
+            />
             <Route
               path="/product/:id"
               element={

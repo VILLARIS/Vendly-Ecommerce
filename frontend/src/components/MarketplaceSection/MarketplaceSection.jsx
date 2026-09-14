@@ -70,12 +70,12 @@ function MarketplaceSection() {
             >
               <ChevronRight className="h-5 w-5" />
             </button>
-            <a
-              href="#"
+            <Link
+              to="/browse/all"
               className="text-sm font-semibold text-purple-600 transition-colors hover:text-purple-700 md:text-base"
             >
               See more →
-            </a>
+            </Link>
           </div>
         </div>
 
