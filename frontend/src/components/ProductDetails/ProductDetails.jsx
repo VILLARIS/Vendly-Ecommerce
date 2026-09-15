@@ -223,14 +223,14 @@ function ProductDetails() {
 
   if (!product) {
     return (
-      <div className="mx-auto max-w-7xl px-4 py-8">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-          <div className="aspect-square animate-pulse rounded-xl bg-gray-100" />
+          <div className="aspect-square animate-pulse rounded-xl bg-slate-100" />
           <div className="flex flex-col gap-4">
-            <div className="h-6 w-3/4 animate-pulse rounded bg-gray-200" />
-            <div className="h-4 w-1/3 animate-pulse rounded bg-gray-100" />
-            <div className="h-12 w-1/2 animate-pulse rounded bg-gray-100" />
-            <div className="h-28 w-full animate-pulse rounded-xl bg-gray-100" />
+            <div className="h-6 w-3/4 animate-pulse rounded bg-slate-200" />
+            <div className="h-4 w-1/3 animate-pulse rounded bg-slate-100" />
+            <div className="h-12 w-1/2 animate-pulse rounded bg-slate-100" />
+            <div className="h-28 w-full animate-pulse rounded-xl bg-slate-100" />
           </div>
         </div>
       </div>
@@ -239,10 +239,10 @@ function ProductDetails() {
 
   return (
     <div className="bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-8">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         {/* Breadcrumbs */}
         <nav className="mb-6 flex items-center gap-2 text-sm">
-          <Link to="/" className="text-slate-500 transition-colors hover:text-indigo-600">
+          <Link to="/" className="text-slate-500 transition-colors hover:text-blue-600">
             Home
           </Link>
           <span className="text-slate-400">/</span>
@@ -254,7 +254,7 @@ function ProductDetails() {
               <>
                 <Link
                   to={`/browse/${dept.slug}`}
-                  className="text-slate-500 transition-colors hover:text-indigo-600"
+                  className="text-slate-500 transition-colors hover:text-blue-600"
                 >
                   {dept.name}
                 </Link>
@@ -267,7 +267,7 @@ function ProductDetails() {
 
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
           {/* Left - Image gallery */}
-          <div className="h-fit overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm">
+          <div className="h-fit overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm">
             <div className="flex aspect-square w-full items-center justify-center bg-white p-8">
               <img
                 src={activeImg}
@@ -276,15 +276,15 @@ function ProductDetails() {
               />
             </div>
             {product.gallery.length > 1 && (
-              <div className="flex gap-2 border-t border-gray-100 bg-gray-50/60 p-3">
+              <div className="flex gap-2 border-t border-slate-100 bg-slate-50/60 p-3">
                 {product.gallery.slice(0, 4).map((img) => (
                   <button
                     key={img}
                     onClick={() => setSelectedImg(img)}
                     className={`grid size-16 shrink-0 place-items-center overflow-hidden rounded-lg border bg-white p-1 transition-all ${
                       activeImg === img
-                        ? "border-indigo-600 ring-2 ring-indigo-600/20"
-                        : "border-gray-200 hover:border-indigo-300"
+                        ? "border-blue-600 ring-2 ring-blue-600/20"
+                        : "border-slate-200 hover:border-blue-300"
                     }`}
                     title="View image"
                   >
@@ -321,13 +321,13 @@ function ProductDetails() {
                     />
                   ))}
                 </div>
-                <span className="font-medium text-indigo-600">
+                <span className="font-medium text-blue-600">
                   {product.rating.toFixed(1)}
                 </span>
                 {product.reviews != null && (
                   <>
                     <span className="text-slate-300">|</span>
-                    <span className="text-indigo-600 underline-offset-2 hover:underline">
+                    <span className="text-blue-600 underline-offset-2 hover:underline">
                       {product.reviews} reviews
                     </span>
                   </>
@@ -338,7 +338,7 @@ function ProductDetails() {
             </div>
 
             {/* Price */}
-            <div className="mt-6 border-t border-gray-200 pt-6">
+            <div className="mt-6 border-t border-slate-200 pt-6">
               <div className="flex items-center gap-2.5">
                 {product.oldPrice != null && (
                   <p className="text-lg font-medium text-slate-400 line-through">
@@ -367,9 +367,9 @@ function ProductDetails() {
             </div>
 
             {/* Seller */}
-            <div className="mt-6 flex items-center justify-between border-t border-gray-200 pt-6">
+            <div className="mt-6 flex items-center justify-between border-t border-slate-200 pt-6">
               <div className="flex items-center gap-3">
-                <div className="grid size-10 shrink-0 place-items-center rounded-full bg-indigo-600 font-bold text-white">
+                <div className="grid size-10 shrink-0 place-items-center rounded-full bg-blue-600 font-bold text-white">
                   {sellerInitials(product.brand)}
                 </div>
                 <div>
@@ -387,7 +387,7 @@ function ProductDetails() {
               </div>
               <a
                 href="#"
-                className="flex items-center gap-1 text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-700"
+                className="flex items-center gap-1 text-sm font-medium text-blue-600 transition-colors hover:text-blue-700"
               >
                 Visit store
                 <ChevronRight className="h-4 w-4" />
@@ -395,7 +395,7 @@ function ProductDetails() {
             </div>
 
             {/* Buy controls */}
-            <div className="mt-6 flex flex-col gap-3 border-t border-gray-200 pt-6">
+            <div className="mt-6 flex flex-col gap-3 border-t border-slate-200 pt-6">
               <p className="flex items-center gap-2 text-sm font-semibold text-emerald-600">
                 <span className="size-2 rounded-full bg-emerald-500" />
                 In Stock
@@ -406,7 +406,7 @@ function ProductDetails() {
                 <div className="flex w-32 shrink-0 items-center justify-between rounded-lg border border-slate-200 bg-white px-1">
                   <button
                     onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                    className="grid size-9 place-items-center text-slate-500 transition-colors hover:text-indigo-600"
+                    className="grid size-9 place-items-center text-slate-500 transition-colors hover:text-blue-600"
                     title="Decrease quantity"
                   >
                     <Minus className="h-4 w-4" />
@@ -414,7 +414,7 @@ function ProductDetails() {
                   <span className="text-sm font-semibold text-slate-900">{quantity}</span>
                   <button
                     onClick={() => setQuantity((q) => q + 1)}
-                    className="grid size-9 place-items-center text-slate-500 transition-colors hover:text-indigo-600"
+                    className="grid size-9 place-items-center text-slate-500 transition-colors hover:text-blue-600"
                     title="Increase quantity"
                   >
                     <Plus className="h-4 w-4" />
@@ -434,7 +434,7 @@ function ProductDetails() {
                       quantity,
                     )
                   }
-                  className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-indigo-600 py-3 text-center font-semibold text-white transition-colors hover:bg-indigo-700"
+                  className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-blue-600 py-3 text-center font-semibold text-white transition-colors hover:bg-blue-700"
                 >
                   <ShoppingCart className="h-5 w-5" />
                   Add to cart
@@ -467,14 +467,14 @@ function ProductDetails() {
             </div>
 
             {/* Trust */}
-            <div className="mt-8 flex flex-col gap-3 border-t border-gray-200 pt-6">
+            <div className="mt-8 flex flex-col gap-3 border-t border-slate-200 pt-6">
               {[
                 { icon: Truck, label: "Free shipping" },
                 { icon: RefreshCcw, label: "30-day returns" },
                 { icon: ShieldCheck, label: "Buyer protection" },
               ].map(({ icon: Icon, label }) => (
                 <div key={label} className="flex items-center gap-3">
-                  <Icon className="h-4 w-4 text-indigo-600" />
+                  <Icon className="h-4 w-4 text-blue-600" />
                   <p className="text-sm text-slate-600">{label}</p>
                 </div>
               ))}
@@ -484,14 +484,14 @@ function ProductDetails() {
 
         {/* Info tabs */}
         <div className="mt-16">
-          <div className="flex gap-6 overflow-x-auto border-b border-gray-200">
+          <div className="flex gap-6 overflow-x-auto border-b border-slate-200">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`shrink-0 border-b-2 py-3 text-sm transition-colors ${
                   activeTab === tab
-                    ? "border-indigo-600 font-semibold text-indigo-600"
+                    ? "border-blue-600 font-semibold text-blue-600"
                     : "border-transparent font-medium text-slate-500 hover:text-slate-700"
                 }`}
               >
@@ -524,7 +524,7 @@ function ProductDetails() {
 
           {activeTab === "Specifications" && (
             <div className="pt-8">
-              <dl className="divide-y divide-gray-100">
+              <dl className="divide-y divide-slate-100">
                 {[
                   ["Brand", product.brand],
                   ["Model", product.title],
@@ -547,10 +547,10 @@ function ProductDetails() {
               {sampleReviews.map((review) => (
                 <div
                   key={review.author}
-                  className="flex flex-col gap-3 rounded-xl border border-gray-100 bg-white p-5 shadow-sm"
+                  className="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white p-5 shadow-sm"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="grid size-10 shrink-0 place-items-center rounded-full bg-indigo-50 font-bold text-indigo-600">
+                    <div className="grid size-10 shrink-0 place-items-center rounded-full bg-blue-50 font-bold text-blue-600">
                       {review.initials}
                     </div>
                     <div>
@@ -583,8 +583,8 @@ function ProductDetails() {
             <div className="flex flex-col gap-6 pt-8">
               {shippingOptions.map(({ icon: Icon, title, text }) => (
                 <div key={title} className="flex items-start gap-4">
-                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-indigo-50">
-                    <Icon className="h-5 w-5 text-indigo-600" />
+                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-blue-50">
+                    <Icon className="h-5 w-5 text-blue-600" />
                   </span>
                   <div>
                     <p className="text-sm font-semibold text-slate-900">{title}</p>
@@ -598,16 +598,16 @@ function ProductDetails() {
 
         {/* Similar products */}
         <section className="mb-12 mt-24">
-          <h2 className="mb-8 text-2xl font-bold text-gray-900">Similar products</h2>
+          <h2 className="mb-8 text-2xl font-bold text-slate-900">Similar products</h2>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {similarProducts.map((item) => (
               <Link
                 key={item.id}
                 to={`/product/${item.id}`}
-                className="flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white transition-shadow hover:shadow-md"
+                className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white transition-shadow hover:shadow-md"
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100">
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
                   <img
                     src={item.image}
                     alt={item.title}
@@ -632,7 +632,7 @@ function ProductDetails() {
                       });
                     }}
                     className={`absolute right-2 top-2 grid size-8 place-items-center rounded-full bg-white shadow-sm transition-all ${
-                      isFavorite(item.id) ? "text-red-500" : "text-gray-400 hover:text-red-500"
+                      isFavorite(item.id) ? "text-red-500" : "text-slate-400 hover:text-red-500"
                     }`}
                     title={isFavorite(item.id) ? "Remove from favorites" : "Add to favorites"}
                   >
@@ -641,7 +641,7 @@ function ProductDetails() {
                 </div>
 
                 <div className="flex flex-1 flex-col p-4">
-                  <p className="text-xs font-semibold text-purple-600">{item.store}</p>
+                  <p className="text-xs font-semibold text-blue-600">{item.store}</p>
 
                   <p className="mt-1 line-clamp-2 min-h-10 text-sm font-semibold text-slate-800">
                     {item.title}
@@ -655,12 +655,12 @@ function ProductDetails() {
                           className={`h-3.5 w-3.5 ${
                             i < Math.round(item.rating)
                               ? "fill-amber-400 text-amber-400"
-                              : "fill-gray-200 text-gray-200"
+                              : "fill-slate-200 text-slate-200"
                           }`}
                         />
                       ))}
                     </div>
-                    <span className="text-xs text-gray-400">({item.reviews})</span>
+                    <span className="text-xs text-slate-400">({item.reviews})</span>
                   </div>
 
                   <div className="mt-2 flex items-baseline gap-2">
@@ -668,7 +668,7 @@ function ProductDetails() {
                       {formatPrice(item.price)}
                     </span>
                     {item.oldPrice != null && (
-                      <span className="text-xs text-gray-400 line-through">
+                      <span className="text-xs text-slate-400 line-through">
                         {formatPrice(item.oldPrice)}
                       </span>
                     )}
@@ -688,7 +688,7 @@ function ProductDetails() {
                         image: item.image,
                       });
                     }}
-                    className="mt-3 w-full rounded-lg bg-purple-600 py-2 text-sm font-semibold text-white transition-colors hover:bg-purple-700"
+                    className="mt-3 w-full rounded-lg bg-blue-600 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
                   >
                     Add to cart
                   </button>

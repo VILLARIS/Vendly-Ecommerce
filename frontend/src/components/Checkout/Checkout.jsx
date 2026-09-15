@@ -46,7 +46,7 @@ const defaultMethods = [
 ];
 
 const networks = [
-  { label: "Visa", gradient: "from-indigo-500 to-blue-600" },
+  { label: "Visa", gradient: "from-blue-500 to-blue-600" },
   { label: "Mastercard", gradient: "from-red-500 to-orange-500" },
   { label: "Amex", gradient: "from-slate-700 to-slate-900" },
 ];
@@ -64,7 +64,7 @@ const readStore = (key, fallback) => {
 };
 
 const inputClass =
-  "w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100";
+  "w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-100";
 
 const deliveryOptions = [
   {
@@ -85,14 +85,14 @@ const deliveryOptions = [
 
 function SectionCard({ step, icon: Icon, title, subtitle, children }) {
   return (
-    <section className="rounded-2xl border border-gray-200 bg-white p-6">
+    <section className="rounded-2xl border border-slate-200 bg-white p-6">
       <div className="flex items-center gap-3">
-        <span className="grid size-10 shrink-0 place-items-center rounded-full bg-indigo-50 text-indigo-600">
+        <span className="grid size-10 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600">
           <Icon className="h-5 w-5" />
         </span>
         <div>
           <p className="flex items-center gap-2 text-base font-bold text-slate-900">
-            <span className="text-xs font-bold text-indigo-500">STEP {step}</span>
+            <span className="text-xs font-bold text-blue-500">STEP {step}</span>
             {title}
           </p>
           {subtitle && <p className="text-xs text-slate-500">{subtitle}</p>}
@@ -110,16 +110,16 @@ function RadioCard({ selected, onClick, children, className = "" }) {
       onClick={onClick}
       className={`flex w-full items-start gap-3 rounded-xl border p-4 text-left transition-all ${
         selected
-          ? "border-indigo-600 bg-indigo-50/50 ring-1 ring-indigo-600"
-          : "border-gray-200 hover:border-indigo-300 hover:bg-gray-50"
+          ? "border-blue-600 bg-blue-50/50 ring-1 ring-blue-600"
+          : "border-slate-200 hover:border-blue-300 hover:bg-slate-50"
       } ${className}`}
     >
       <span
         className={`mt-0.5 grid size-5 shrink-0 place-items-center rounded-full border-2 ${
-          selected ? "border-indigo-600" : "border-gray-300"
+          selected ? "border-blue-600" : "border-slate-300"
         }`}
       >
-        {selected && <span className="size-2.5 rounded-full bg-indigo-600" />}
+        {selected && <span className="size-2.5 rounded-full bg-blue-600" />}
       </span>
       <span className="min-w-0 flex-1">{children}</span>
     </button>
@@ -217,9 +217,9 @@ function Checkout() {
 
   if (order) {
     return (
-      <div className="bg-gray-50 py-16">
+      <div className="bg-slate-50 py-16">
         <div className="mx-auto max-w-lg px-4">
-          <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white text-center shadow-sm">
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white text-center shadow-sm">
             <div className="flex flex-col items-center gap-3 px-8 py-10">
               <span className="grid size-16 place-items-center rounded-full bg-emerald-50">
                 <CheckCircle2 className="h-9 w-9 text-emerald-600" />
@@ -231,8 +231,8 @@ function Checkout() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 border-t border-gray-100">
-              <div className="border-r border-gray-100 px-6 py-4">
+            <div className="grid grid-cols-2 border-t border-slate-100">
+              <div className="border-r border-slate-100 px-6 py-4">
                 <p className="text-xs uppercase tracking-wide text-slate-400">Order number</p>
                 <p className="mt-1 text-sm font-bold text-slate-900">{order.id}</p>
               </div>
@@ -242,7 +242,7 @@ function Checkout() {
               </div>
             </div>
 
-            <div className="border-t border-gray-100 px-8 py-6">
+            <div className="border-t border-slate-100 px-8 py-6">
               <p className="text-xs text-slate-500">
                 A confirmation email was sent to{" "}
                 <span className="font-medium text-slate-700">{order.email || "your inbox"}</span>.
@@ -250,7 +250,7 @@ function Checkout() {
               <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                 <Link
                   to="/"
-                  className="flex-1 rounded-lg bg-indigo-600 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
+                  className="flex-1 rounded-lg bg-blue-600 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
                 >
                   Continue shopping
                 </Link>
@@ -270,10 +270,10 @@ function Checkout() {
 
   if (items.length === 0) {
     return (
-      <div className="bg-gray-50 py-16">
+      <div className="bg-slate-50 py-16">
         <div className="mx-auto max-w-lg px-4 text-center">
-          <span className="mx-auto grid size-16 place-items-center rounded-full bg-indigo-50">
-            <ShoppingBag className="h-8 w-8 text-indigo-500" />
+          <span className="mx-auto grid size-16 place-items-center rounded-full bg-blue-50">
+            <ShoppingBag className="h-8 w-8 text-blue-500" />
           </span>
           <h1 className="mt-4 text-xl font-bold text-slate-900">Your cart is empty</h1>
           <p className="mt-1 text-sm text-slate-500">
@@ -281,7 +281,7 @@ function Checkout() {
           </p>
           <Link
             to="/"
-            className="mt-6 inline-block rounded-lg bg-indigo-600 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
+            className="mt-6 inline-block rounded-lg bg-blue-600 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
           >
             Start shopping
           </Link>
@@ -291,8 +291,8 @@ function Checkout() {
   }
 
   return (
-    <div className="bg-gray-50 py-8">
-      <form onSubmit={placeOrder} className="mx-auto max-w-6xl px-4">
+    <div className="bg-slate-50 py-8">
+      <form onSubmit={placeOrder} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <div>
@@ -301,7 +301,7 @@ function Checkout() {
               Complete your order in a few simple steps.
             </p>
           </div>
-          <span className="flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-slate-500 ring-1 ring-gray-200">
+          <span className="flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-slate-500 ring-1 ring-slate-200">
             <Lock className="h-3.5 w-3.5 text-emerald-600" />
             Secure checkout
           </span>
@@ -319,7 +319,7 @@ function Checkout() {
             >
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1.5 block text-sm font-semibold text-gray-700">
+                  <label className="mb-1.5 block text-sm font-semibold text-slate-700">
                     Full name
                   </label>
                   <input
@@ -331,7 +331,7 @@ function Checkout() {
                   />
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-sm font-semibold text-gray-700">Email</label>
+                  <label className="mb-1.5 block text-sm font-semibold text-slate-700">Email</label>
                   <input
                     type="email"
                     value={contact.email}
@@ -343,7 +343,7 @@ function Checkout() {
               </div>
 
               <div className="mt-5">
-                <p className="mb-2 text-sm font-semibold text-gray-700">Shipping address</p>
+                <p className="mb-2 text-sm font-semibold text-slate-700">Shipping address</p>
 
                 {addresses.length > 0 && (
                   <div className="flex flex-col gap-3">
@@ -359,7 +359,7 @@ function Checkout() {
                         <div className="flex items-center gap-2">
                           <p className="text-sm font-semibold text-slate-900">{address.label}</p>
                           {address.isDefault && (
-                            <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[10px] font-semibold text-indigo-700">
+                            <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[10px] font-semibold text-blue-700">
                               Default
                             </span>
                           )}
@@ -376,20 +376,20 @@ function Checkout() {
                   <button
                     type="button"
                     onClick={() => setShowNewAddress(true)}
-                    className="mt-3 flex items-center gap-1.5 text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-700"
+                    className="mt-3 flex items-center gap-1.5 text-sm font-medium text-blue-600 transition-colors hover:text-blue-700"
                   >
                     <Plus className="h-4 w-4" />
                     Use a different address
                   </button>
                 ) : (
-                  <div className="mt-3 flex flex-col gap-4 rounded-xl border border-gray-200 p-4">
+                  <div className="mt-3 flex flex-col gap-4 rounded-xl border border-slate-200 p-4">
                     <div className="flex items-center justify-between">
                       <p className="text-sm font-semibold text-slate-800">New address</p>
                       {addresses.length > 0 && (
                         <button
                           type="button"
                           onClick={() => setShowNewAddress(false)}
-                          className="grid size-7 place-items-center rounded-lg text-slate-400 transition-colors hover:bg-gray-100 hover:text-slate-600"
+                          className="grid size-7 place-items-center rounded-lg text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600"
                           title="Cancel"
                         >
                           <X className="h-4 w-4" />
@@ -442,7 +442,7 @@ function Checkout() {
                     >
                       <div className="flex items-start justify-between gap-2">
                         <div className="flex items-center gap-2">
-                          <Icon className="h-4 w-4 text-indigo-600" />
+                          <Icon className="h-4 w-4 text-blue-600" />
                           <p className="text-sm font-semibold text-slate-900">{option.title}</p>
                         </div>
                         <span className="text-sm font-bold text-slate-900">
@@ -491,7 +491,7 @@ function Checkout() {
                           </div>
                         </div>
                         {method.isDefault && (
-                          <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[10px] font-semibold text-indigo-700">
+                          <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[10px] font-semibold text-blue-700">
                             Default
                           </span>
                         )}
@@ -505,20 +505,20 @@ function Checkout() {
                 <button
                   type="button"
                   onClick={() => setShowNewCard(true)}
-                  className="mt-3 flex items-center gap-1.5 text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-700"
+                  className="mt-3 flex items-center gap-1.5 text-sm font-medium text-blue-600 transition-colors hover:text-blue-700"
                 >
                   <Plus className="h-4 w-4" />
                   Pay with a different card
                 </button>
               ) : (
-                <div className="mt-3 flex flex-col gap-4 rounded-xl border border-gray-200 p-4">
+                <div className="mt-3 flex flex-col gap-4 rounded-xl border border-slate-200 p-4">
                   <div className="flex items-center justify-between">
                     <p className="text-sm font-semibold text-slate-800">New card</p>
                     {methods.length > 0 && (
                       <button
                         type="button"
                         onClick={() => setShowNewCard(false)}
-                        className="grid size-7 place-items-center rounded-lg text-slate-400 transition-colors hover:bg-gray-100 hover:text-slate-600"
+                        className="grid size-7 place-items-center rounded-lg text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600"
                         title="Cancel"
                       >
                         <X className="h-4 w-4" />
@@ -538,8 +538,8 @@ function Checkout() {
                           }
                           className={`flex items-center justify-center gap-1.5 rounded-xl border px-2 py-2.5 text-sm font-medium transition-all ${
                             selected
-                              ? "border-indigo-600 bg-indigo-50 text-indigo-700"
-                              : "border-gray-200 text-gray-600 hover:border-indigo-300 hover:bg-gray-50"
+                              ? "border-blue-600 bg-blue-50 text-blue-700"
+                              : "border-slate-200 text-slate-600 hover:border-blue-300 hover:bg-slate-50"
                           }`}
                         >
                           <CreditCard className="h-4 w-4" />
@@ -588,16 +588,16 @@ function Checkout() {
 
           {/* Right - Order summary */}
           <div className="lg:col-span-1">
-            <div className="sticky top-28 rounded-2xl border border-gray-200 bg-white p-6">
+            <div className="sticky top-28 rounded-2xl border border-slate-200 bg-white p-6">
               <h2 className="text-lg font-bold text-slate-900">Order summary</h2>
               <p className="mt-0.5 text-xs text-slate-500">
                 {count} {count === 1 ? "item" : "items"} in your cart
               </p>
 
-              <ul className="mt-4 max-h-64 divide-y divide-gray-100 overflow-y-auto">
+              <ul className="mt-4 max-h-64 divide-y divide-slate-100 overflow-y-auto">
                 {items.map((item) => (
                   <li key={item.id} className="flex items-center gap-3 py-3">
-                    <span className="relative grid size-12 shrink-0 place-items-center overflow-hidden rounded-lg border border-gray-100 bg-gray-50 p-1">
+                    <span className="relative grid size-12 shrink-0 place-items-center overflow-hidden rounded-lg border border-slate-100 bg-slate-50 p-1">
                       <img
                         src={item.image}
                         alt={item.title}
@@ -617,7 +617,7 @@ function Checkout() {
                 ))}
               </ul>
 
-              <div className="mt-4 flex flex-col gap-2 border-t border-gray-100 pt-4 text-sm">
+              <div className="mt-4 flex flex-col gap-2 border-t border-slate-100 pt-4 text-sm">
                 <div className="flex items-center justify-between">
                   <span className="text-slate-500">Subtotal</span>
                   <span className="font-medium text-slate-900">{money(subtotal)}</span>
@@ -634,7 +634,7 @@ function Checkout() {
                 </div>
               </div>
 
-              <div className="mt-4 flex items-baseline justify-between border-t border-gray-100 pt-4">
+              <div className="mt-4 flex items-baseline justify-between border-t border-slate-100 pt-4">
                 <span className="text-sm font-medium text-slate-500">Total</span>
                 <span className="text-2xl font-extrabold text-slate-900">{money(total)}</span>
               </div>
@@ -647,7 +647,7 @@ function Checkout() {
 
               <button
                 type="submit"
-                className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-indigo-600 py-3 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
+                className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
               >
                 <Lock className="h-4 w-4" />
                 Place order · {money(total)}
@@ -664,7 +664,7 @@ function Checkout() {
         {/* Continue shopping */}
         <Link
           to="/"
-          className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-700"
+          className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-blue-600 transition-colors hover:text-blue-700"
         >
           <ChevronRight className="h-4 w-4 rotate-180" />
           Continue shopping

@@ -39,10 +39,10 @@ function Orders() {
   if (orders.length === 0) {
     return (
       <div>
-        <h2 className="mb-6 text-2xl font-bold text-gray-900">Orders</h2>
-        <div className="flex flex-col items-center justify-center rounded-xl border border-gray-200 bg-white px-4 py-32 text-center">
-          <span className="grid size-14 place-items-center rounded-full bg-indigo-50">
-            <Package className="h-7 w-7 text-indigo-500" />
+        <h2 className="mb-6 text-2xl font-bold text-slate-900">Orders</h2>
+        <div className="flex flex-col items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-32 text-center">
+          <span className="grid size-14 place-items-center rounded-full bg-blue-50">
+            <Package className="h-7 w-7 text-blue-500" />
           </span>
           <p className="mt-4 text-lg font-semibold text-slate-800">
             You don't have any orders yet
@@ -52,7 +52,7 @@ function Orders() {
           </p>
           <Link
             to="/"
-            className="mt-6 flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
+            className="mt-6 flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
           >
             <ShoppingBag className="h-4 w-4" />
             Start shopping
@@ -66,12 +66,12 @@ function Orders() {
     <div>
       <div className="mb-6 flex items-end justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Orders</h2>
-          <p className="mt-1 text-sm text-gray-500">
+          <h2 className="text-2xl font-bold text-slate-900">Orders</h2>
+          <p className="mt-1 text-sm text-slate-500">
             Track and review the orders you've placed.
           </p>
         </div>
-        <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-gray-500 ring-1 ring-gray-200">
+        <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-500 ring-1 ring-slate-200">
           {orders.length} placed
         </span>
       </div>
@@ -80,10 +80,10 @@ function Orders() {
         {orders.map((order) => (
           <div
             key={order.id}
-            className="overflow-hidden rounded-2xl border border-gray-200 bg-white"
+            className="overflow-hidden rounded-2xl border border-slate-200 bg-white"
           >
             {/* Order header */}
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 bg-gray-50/60 px-5 py-3.5">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 bg-slate-50/60 px-5 py-3.5">
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
                 <p className="text-sm font-bold text-slate-900">{order.id}</p>
                 <p className="text-xs text-slate-500">Placed {formatDate(order.date)}</p>
@@ -99,7 +99,7 @@ function Orders() {
             </div>
 
             {/* Items */}
-            <ul className="divide-y divide-gray-100">
+            <ul className="divide-y divide-slate-100">
               {order.items?.map((item) => (
                 <li
                   key={`${order.id}-${item.id}`}
@@ -107,7 +107,7 @@ function Orders() {
                 >
                   <Link
                     to={`/product/${item.id}`}
-                    className="grid size-14 shrink-0 place-items-center overflow-hidden rounded-lg border border-gray-100 bg-gray-50 p-1"
+                    className="grid size-14 shrink-0 place-items-center overflow-hidden rounded-lg border border-slate-100 bg-slate-50 p-1"
                   >
                     <img
                       src={item.image}
@@ -118,7 +118,7 @@ function Orders() {
                   <div className="min-w-0 flex-1">
                     <Link
                       to={`/product/${item.id}`}
-                      className="line-clamp-1 text-sm font-semibold text-slate-800 hover:text-indigo-600"
+                      className="line-clamp-1 text-sm font-semibold text-slate-800 hover:text-blue-600"
                     >
                       {item.title}
                     </Link>

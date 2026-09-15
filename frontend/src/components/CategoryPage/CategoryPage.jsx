@@ -57,11 +57,11 @@ function ProductCard({ product }) {
   const favorite = isFavorite(product.id);
 
   return (
-    <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-lg">
+    <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-lg">
       {/* Image */}
       <Link
         to={`/product/${product.id}`}
-        className="group relative block aspect-square w-full bg-gray-50 p-3"
+        className="group relative block aspect-square w-full bg-slate-50 p-3"
       >
         <img
           src={product.thumbnail}
@@ -89,7 +89,7 @@ function ProductCard({ product }) {
           className={`absolute right-3 top-3 grid size-8 place-items-center rounded-full bg-white shadow-sm transition-all ${
             favorite
               ? "text-red-500"
-              : "text-gray-400 hover:scale-110 hover:text-red-500"
+              : "text-slate-400 hover:scale-110 hover:text-red-500"
           }`}
           title={favorite ? "Remove from wishlist" : "Add to wishlist"}
         >
@@ -99,19 +99,19 @@ function ProductCard({ product }) {
 
       {/* Body */}
       <div className="flex flex-1 flex-col gap-1 p-3.5">
-        <p className="text-[11px] font-bold uppercase tracking-wider text-indigo-500">
+        <p className="text-[11px] font-bold uppercase tracking-wider text-blue-500">
           {product.brand}
         </p>
 
         <Link
           to={`/product/${product.id}`}
-          className="line-clamp-2 min-h-[2.5rem] text-[13px] font-medium leading-snug text-slate-800 transition-colors hover:text-indigo-600"
+          className="line-clamp-2 min-h-[2.5rem] text-[13px] font-medium leading-snug text-slate-800 transition-colors hover:text-blue-600"
         >
           {product.title}
         </Link>
 
         {product.rating > 0 && (
-          <p className="flex items-center gap-1 text-xs text-gray-500">
+          <p className="flex items-center gap-1 text-xs text-slate-500">
             <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
             {product.rating.toFixed(1)}
           </p>
@@ -143,7 +143,7 @@ function ProductCard({ product }) {
               image: product.thumbnail,
             });
           }}
-          className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-lg bg-indigo-600 py-2 text-sm font-semibold text-white transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+          className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-lg bg-blue-600 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
         >
           <ShoppingCart className="h-4 w-4" />
           Add to cart
@@ -232,13 +232,13 @@ function CategoryDetails({ slug, initialSub }) {
     : null;
 
   return (
-    <div className="min-h-[60vh] bg-gray-50 py-8 md:py-10">
-      <div className="mx-auto max-w-7xl px-4">
+    <div className="min-h-[60vh] bg-slate-50 py-8 md:py-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Breadcrumbs */}
         <nav className="mb-5 flex flex-wrap items-center gap-1.5 text-[13px]">
           <Link
             to="/"
-            className="font-medium text-slate-500 transition-colors hover:text-indigo-600"
+            className="font-medium text-slate-500 transition-colors hover:text-blue-600"
           >
             Home
           </Link>
@@ -256,7 +256,7 @@ function CategoryDetails({ slug, initialSub }) {
 
         {/* Title */}
         <div className="mb-8 flex flex-wrap items-center gap-4">
-          <span className="grid size-13 place-items-center rounded-2xl bg-white text-indigo-600 shadow-sm ring-1 ring-gray-200">
+          <span className="grid size-13 place-items-center rounded-2xl bg-white text-blue-600 shadow-sm ring-1 ring-slate-200">
             <Layers className="h-6 w-6" />
           </span>
           <div className="min-w-0">
@@ -280,14 +280,14 @@ function CategoryDetails({ slug, initialSub }) {
 
         {/* Not found */}
         {!valid && (
-          <div className="flex flex-col items-center rounded-2xl border border-gray-200 bg-white px-4 py-20 text-center shadow-sm">
+          <div className="flex flex-col items-center rounded-2xl border border-slate-200 bg-white px-4 py-20 text-center shadow-sm">
             <p className="text-lg font-semibold text-slate-800">Category not found</p>
             <p className="mt-1 text-sm text-slate-500">
               We couldn't find a department matching "{slug}".
             </p>
             <Link
               to="/"
-              className="mt-6 rounded-lg bg-indigo-600 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
+              className="mt-6 rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
             >
               Back to home
             </Link>
@@ -300,14 +300,14 @@ function CategoryDetails({ slug, initialSub }) {
             {[...Array(15)].map((_, i) => (
               <div
                 key={i}
-                className="overflow-hidden rounded-2xl border border-gray-200 bg-white"
+                className="overflow-hidden rounded-2xl border border-slate-200 bg-white"
               >
-                <div className="aspect-square w-full animate-pulse bg-gray-100" />
+                <div className="aspect-square w-full animate-pulse bg-slate-100" />
                 <div className="space-y-2.5 p-3.5">
-                  <div className="h-2.5 w-1/3 animate-pulse rounded bg-gray-100" />
-                  <div className="h-3.5 w-5/6 animate-pulse rounded bg-gray-100" />
-                  <div className="h-5 w-1/2 animate-pulse rounded bg-gray-100" />
-                  <div className="h-9 w-full animate-pulse rounded-lg bg-gray-100" />
+                  <div className="h-2.5 w-1/3 animate-pulse rounded bg-slate-100" />
+                  <div className="h-3.5 w-5/6 animate-pulse rounded bg-slate-100" />
+                  <div className="h-5 w-1/2 animate-pulse rounded bg-slate-100" />
+                  <div className="h-9 w-full animate-pulse rounded-lg bg-slate-100" />
                 </div>
               </div>
             ))}
@@ -316,14 +316,14 @@ function CategoryDetails({ slug, initialSub }) {
 
         {/* Error */}
         {valid && status === "error" && (
-          <div className="flex flex-col items-center rounded-2xl border border-gray-200 bg-white px-4 py-20 text-center shadow-sm">
+          <div className="flex flex-col items-center rounded-2xl border border-slate-200 bg-white px-4 py-20 text-center shadow-sm">
             <p className="text-lg font-semibold text-slate-800">No products found</p>
             <p className="mt-1 text-sm text-slate-500">
               We couldn't load anything for this category right now.
             </p>
             <Link
               to="/browse/all"
-              className="mt-6 rounded-lg bg-indigo-600 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
+              className="mt-6 rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
             >
               Browse all departments
             </Link>
@@ -334,7 +334,7 @@ function CategoryDetails({ slug, initialSub }) {
         {valid && status === "ready" && (
           <div className="grid gap-6 lg:grid-cols-[230px_1fr]">
             {/* Sidebar (MercadoLibre style) */}
-            <aside className="hidden h-fit self-start rounded-2xl border border-gray-200 bg-white p-4 shadow-sm lg:sticky lg:top-32 lg:block">
+            <aside className="hidden h-fit self-start rounded-2xl border border-slate-200 bg-white p-4 shadow-sm lg:sticky lg:top-32 lg:block">
               <p className="px-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">
                 Shop by category
               </p>
@@ -344,8 +344,8 @@ function CategoryDetails({ slug, initialSub }) {
                     to="/browse/all"
                     className={`flex items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors ${
                       isAll
-                        ? "bg-indigo-50 font-semibold text-indigo-600"
-                        : "font-medium text-slate-600 hover:bg-gray-50 hover:text-indigo-600"
+                        ? "bg-blue-50 font-semibold text-blue-600"
+                        : "font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600"
                     }`}
                   >
                     All departments
@@ -358,14 +358,14 @@ function CategoryDetails({ slug, initialSub }) {
                       to={`/browse/${dept.slug}`}
                       className={`flex items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors ${
                         slug === dept.slug
-                          ? "bg-indigo-50 font-semibold text-indigo-600"
-                          : "font-medium text-slate-600 hover:bg-gray-50 hover:text-indigo-600"
+                          ? "bg-blue-50 font-semibold text-blue-600"
+                          : "font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600"
                       }`}
                     >
                       {dept.name}
                       <ChevronRight
                         className={`h-4 w-4 ${
-                          slug === dept.slug ? "text-indigo-400" : "text-slate-300"
+                          slug === dept.slug ? "text-blue-400" : "text-slate-300"
                         }`}
                       />
                     </Link>
@@ -375,7 +375,7 @@ function CategoryDetails({ slug, initialSub }) {
 
               {department && (
                 <>
-                  <div className="my-4 h-px bg-gray-100" />
+                  <div className="my-4 h-px bg-slate-100" />
                   <p className="px-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">
                     Filter by
                   </p>
@@ -385,8 +385,8 @@ function CategoryDetails({ slug, initialSub }) {
                         onClick={() => setSub(null)}
                         className={`block w-full rounded-lg px-3 py-2 text-left text-sm transition-colors ${
                           sub === null
-                            ? "bg-indigo-50 font-semibold text-indigo-600"
-                            : "font-medium text-slate-600 hover:bg-gray-50 hover:text-indigo-600"
+                            ? "bg-blue-50 font-semibold text-blue-600"
+                            : "font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600"
                         }`}
                       >
                         All {department.name}
@@ -398,8 +398,8 @@ function CategoryDetails({ slug, initialSub }) {
                           onClick={() => setSub(item.slug)}
                           className={`block w-full rounded-lg px-3 py-2 text-left text-sm transition-colors ${
                             sub === item.slug
-                              ? "bg-indigo-50 font-semibold text-indigo-600"
-                              : "font-medium text-slate-600 hover:bg-gray-50 hover:text-indigo-600"
+                              ? "bg-blue-50 font-semibold text-blue-600"
+                              : "font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-600"
                           }`}
                         >
                           {item.label}
@@ -414,7 +414,7 @@ function CategoryDetails({ slug, initialSub }) {
             {/* Main */}
             <div>
               {/* Toolbar: sub chips (Temu style) + sort */}
-              <div className="mb-5 flex flex-col gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3 shadow-sm">
+              <div className="mb-5 flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
                 <div className="flex flex-wrap items-center gap-2">
                   {department ? (
                     <>
@@ -422,8 +422,8 @@ function CategoryDetails({ slug, initialSub }) {
                         onClick={() => setSub(null)}
                         className={`rounded-full px-3.5 py-1.5 text-[13px] font-semibold transition-colors ${
                           sub === null
-                            ? "bg-indigo-600 text-white shadow-sm"
-                            : "bg-gray-100 text-slate-600 hover:bg-gray-200"
+                            ? "bg-blue-600 text-white shadow-sm"
+                            : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                         }`}
                       >
                         All
@@ -434,8 +434,8 @@ function CategoryDetails({ slug, initialSub }) {
                           onClick={() => setSub(item.slug)}
                           className={`rounded-full px-3.5 py-1.5 text-[13px] font-semibold transition-colors ${
                             sub === item.slug
-                              ? "bg-indigo-600 text-white shadow-sm"
-                              : "bg-gray-100 text-slate-600 hover:bg-gray-200"
+                              ? "bg-blue-600 text-white shadow-sm"
+                              : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                           }`}
                         >
                           {item.label}
@@ -447,7 +447,7 @@ function CategoryDetails({ slug, initialSub }) {
                       <Link
                         key={dept.slug}
                         to={`/browse/${dept.slug}`}
-                        className="rounded-full bg-gray-100 px-3.5 py-1.5 text-[13px] font-semibold text-slate-600 transition-colors hover:bg-indigo-100 hover:text-indigo-700"
+                        className="rounded-full bg-slate-100 px-3.5 py-1.5 text-[13px] font-semibold text-slate-600 transition-colors hover:bg-blue-100 hover:text-blue-700"
                       >
                         {dept.name}
                       </Link>
@@ -455,7 +455,7 @@ function CategoryDetails({ slug, initialSub }) {
                   )}
                 </div>
 
-                <div className="flex items-center justify-between gap-3 border-t border-gray-100 pt-3">
+                <div className="flex items-center justify-between gap-3 border-t border-slate-100 pt-3">
                   <p className="text-[13px] text-slate-500">
                     <span className="font-semibold text-slate-800">
                       {visible.length}
@@ -472,7 +472,7 @@ function CategoryDetails({ slug, initialSub }) {
                       id="sort"
                       value={sortKey}
                       onChange={(e) => setSortKey(e.target.value)}
-                      className="cursor-pointer rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-700 shadow-sm outline-none transition-colors hover:border-gray-300 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                      className="cursor-pointer rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-medium text-slate-700 shadow-sm outline-none transition-colors hover:border-slate-300 focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
                     >
                       {sortOptions.map((option) => (
                         <option key={option.key} value={option.key}>
@@ -485,7 +485,7 @@ function CategoryDetails({ slug, initialSub }) {
               </div>
 
               {visible.length === 0 ? (
-                <div className="rounded-2xl border border-gray-200 bg-white px-4 py-16 text-center shadow-sm">
+                <div className="rounded-2xl border border-slate-200 bg-white px-4 py-16 text-center shadow-sm">
                   <p className="text-sm font-semibold text-slate-800">
                     Nothing matched your filter
                   </p>
@@ -494,7 +494,7 @@ function CategoryDetails({ slug, initialSub }) {
                   </p>
                   <button
                     onClick={() => setSub(null)}
-                    className="mt-4 text-sm font-semibold text-indigo-600 hover:text-indigo-700"
+                    className="mt-4 text-sm font-semibold text-blue-600 hover:text-blue-700"
                   >
                     Clear filter
                   </button>

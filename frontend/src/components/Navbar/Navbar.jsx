@@ -37,7 +37,7 @@ function Navbar() {
   return (
     <nav className="sticky top-0 z-50 bg-white">
       {/* Level 1 - Main bar */}
-      <div className="border-b border-gray-100">
+      <div className="border-b border-slate-100">
         <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:gap-5 sm:px-6 lg:px-8">
           {/* Brand */}
           <Link to="/" className="flex shrink-0 items-center gap-2.5">
@@ -53,7 +53,7 @@ function Navbar() {
 
           {/* Search */}
           <div className="relative min-w-0 flex-1">
-            <div className="flex h-11 w-full items-center gap-2 rounded-xl border border-gray-200 bg-slate-50 px-3 transition-all focus-within:border-blue-500 focus-within:bg-white focus-within:ring-4 focus-within:ring-blue-500/10">
+            <div className="flex h-11 w-full items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 transition-all focus-within:border-blue-500 focus-within:bg-white focus-within:ring-4 focus-within:ring-blue-500/10">
               <Search className="h-5 w-5 shrink-0 text-slate-400" />
               <input
                 type="text"
@@ -93,7 +93,7 @@ function Navbar() {
       </div>
 
       {/* Level 2 - Categories bar */}
-      <div className="border-b border-gray-100">
+      <div className="border-b border-slate-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative" onMouseLeave={closePanel}>
             <div className="flex items-center">
@@ -104,7 +104,7 @@ function Navbar() {
                 className={`flex h-9 shrink-0 items-center gap-1.5 rounded-lg border px-3.5 text-sm font-semibold transition-colors ${
                   allPanel
                     ? "border-blue-200 bg-blue-50 text-blue-700"
-                    : "border-transparent text-slate-800 hover:border-gray-100 hover:bg-blue-50 hover:text-blue-700"
+                    : "border-transparent text-slate-800 hover:border-slate-100 hover:bg-blue-50 hover:text-blue-700"
                 }`}
               >
                 <Menu className="h-4 w-4" />
@@ -112,7 +112,7 @@ function Navbar() {
                 <ChevronDown className="h-3.5 w-3.5 opacity-60" />
               </button>
 
-              <span className="mx-2 hidden h-4 w-px shrink-0 bg-gray-200 sm:block" />
+              <span className="mx-2 hidden h-4 w-px shrink-0 bg-slate-200 sm:block" />
 
               {/* Departments */}
               <ul className="flex flex-1 items-center gap-0.5 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -137,9 +137,9 @@ function Navbar() {
 
             {/* Flyout */}
             {(allPanel || flyout) && (
-              <div className="absolute top-full z-40 mt-1 rounded-2xl border border-gray-100 bg-white p-6 shadow-xl shadow-slate-900/5 ring-1 ring-black/5 left-4 right-4 sm:left-6 sm:right-6 sm:p-7 lg:left-8 lg:right-8">
+              <div className="absolute top-full z-40 mt-1 rounded-2xl border border-slate-100 bg-white p-6 shadow-xl shadow-slate-900/5 ring-1 ring-black/5 left-4 right-4 sm:left-6 sm:right-6 sm:p-7 lg:left-8 lg:right-8">
                 {/* Panel header */}
-                <div className="flex items-end justify-between gap-6 border-b border-gray-100 pb-4">
+                <div className="flex items-end justify-between gap-6 border-b border-slate-100 pb-4">
                   <div>
                     <p className="text-base font-extrabold tracking-tight text-slate-900">
                       {allPanel ? "All departments" : flyout.name}
@@ -179,7 +179,7 @@ function Navbar() {
                               <Link
                                 to={`/browse/${dept.slug}?sub=${sub.slug}`}
                                 onClick={closePanel}
-                                className="group flex items-center justify-between rounded-md px-1.5 py-1 text-[13px] text-slate-500 transition-colors hover:bg-gray-50 hover:text-blue-600"
+                                className="group flex items-center justify-between rounded-md px-1.5 py-1 text-[13px] text-slate-500 transition-colors hover:bg-slate-50 hover:text-blue-600"
                               >
                                 {sub.label}
                                 <ChevronRight className="h-3.5 w-3.5 text-slate-300 opacity-0 transition-opacity group-hover:opacity-100" />
@@ -197,7 +197,7 @@ function Navbar() {
                         key={sub.slug}
                         to={`/browse/${flyout.slug}?sub=${sub.slug}`}
                         onClick={closePanel}
-                        className="group flex items-center justify-between rounded-xl border border-gray-100 bg-gray-50/60 px-4 py-3 text-sm font-medium text-slate-600 transition-all hover:border-blue-200 hover:bg-white hover:text-blue-700 hover:shadow-sm"
+                        className="group flex items-center justify-between rounded-xl border border-slate-100 bg-slate-50/60 px-4 py-3 text-sm font-medium text-slate-600 transition-all hover:border-blue-200 hover:bg-white hover:text-blue-700 hover:shadow-sm"
                       >
                         {sub.label}
                         <ChevronRight className="h-4 w-4 text-slate-300 transition-colors group-hover:text-blue-500" />
@@ -207,7 +207,7 @@ function Navbar() {
                 )}
 
                 {/* Panel footer */}
-                <div className="mt-6 border-t border-gray-100 pt-4 text-center">
+                <div className="mt-6 border-t border-slate-100 pt-4 text-center">
                   <Link
                     to="/browse/all"
                     onClick={closePanel}

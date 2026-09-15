@@ -36,10 +36,10 @@ function CartPanel() {
         }`}
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
+        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4">
             <div className="flex items-center gap-3">
-              <span className="grid size-10 place-items-center rounded-full bg-indigo-50">
-                <ShoppingCart className="h-5 w-5 text-indigo-600" />
+              <span className="grid size-10 place-items-center rounded-full bg-blue-50">
+                <ShoppingCart className="h-5 w-5 text-blue-600" />
               </span>
               <div>
                 <p className="text-lg font-bold text-slate-900">Shopping cart</p>
@@ -50,7 +50,7 @@ function CartPanel() {
             </div>
             <button
               onClick={closeCart}
-              className="grid size-9 place-items-center rounded-lg text-slate-400 transition-colors hover:bg-gray-50 hover:text-slate-600"
+              className="grid size-9 place-items-center rounded-lg text-slate-400 transition-colors hover:bg-slate-50 hover:text-slate-600"
               title="Close cart"
             >
               <X className="h-5 w-5" />
@@ -60,8 +60,8 @@ function CartPanel() {
           {/* Body */}
           {items.length === 0 ? (
             <div className="flex flex-1 flex-col items-center justify-center gap-3 px-6 text-center">
-              <span className="grid size-14 place-items-center rounded-full bg-indigo-50">
-                <ShoppingCart className="h-7 w-7 text-indigo-500" />
+              <span className="grid size-14 place-items-center rounded-full bg-blue-50">
+                <ShoppingCart className="h-7 w-7 text-blue-500" />
               </span>
               <p className="text-base font-semibold text-slate-800">Your cart is empty</p>
               <p className="text-sm text-slate-500">
@@ -69,7 +69,7 @@ function CartPanel() {
               </p>
               <button
                 onClick={closeCart}
-                className="mt-2 rounded-lg bg-indigo-600 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
+                className="mt-2 rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
               >
                 Start shopping
               </button>
@@ -77,12 +77,12 @@ function CartPanel() {
           ) : (
             <>
               {/* Free shipping progress */}
-              <div className="border-b border-gray-100 px-6 py-3">
+              <div className="border-b border-slate-100 px-6 py-3">
                 <p className="text-xs text-slate-500">
                   {remaining > 0 ? (
                     <>
                       Add{" "}
-                      <span className="font-semibold text-indigo-600">{money(remaining)}</span> more
+                      <span className="font-semibold text-blue-600">{money(remaining)}</span> more
                       for free shipping
                     </>
                   ) : (
@@ -91,22 +91,22 @@ function CartPanel() {
                     </span>
                   )}
                 </p>
-                <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-gray-100">
+                <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-slate-100">
                   <div
-                    className="h-full rounded-full bg-indigo-600 transition-all duration-300"
+                    className="h-full rounded-full bg-blue-600 transition-all duration-300"
                     style={{ width: `${progress}%` }}
                   />
                 </div>
               </div>
 
               {/* Items */}
-              <ul className="flex-1 divide-y divide-gray-100 overflow-y-auto px-6">
+              <ul className="flex-1 divide-y divide-slate-100 overflow-y-auto px-6">
                 {items.map((item) => (
                   <li key={item.id} className="flex items-center gap-4 py-3">
                     <Link
                       to={`/product/${item.id}`}
                       onClick={closeCart}
-                      className="grid size-16 shrink-0 place-items-center overflow-hidden rounded-lg border border-gray-100 bg-gray-50 p-1"
+                      className="grid size-16 shrink-0 place-items-center overflow-hidden rounded-lg border border-slate-100 bg-slate-50 p-1"
                     >
                       <img
                         src={item.image}
@@ -124,7 +124,7 @@ function CartPanel() {
                         <div className="flex w-fit items-center justify-between gap-2 rounded-md border border-slate-200 px-1">
                           <button
                             onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                            className="grid size-7 place-items-center text-slate-500 transition-colors hover:text-indigo-600"
+                            className="grid size-7 place-items-center text-slate-500 transition-colors hover:text-blue-600"
                             title="Decrease quantity"
                           >
                             <Minus className="h-3.5 w-3.5" />
@@ -134,7 +134,7 @@ function CartPanel() {
                           </span>
                           <button
                             onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                            className="grid size-7 place-items-center text-slate-500 transition-colors hover:text-indigo-600"
+                            className="grid size-7 place-items-center text-slate-500 transition-colors hover:text-blue-600"
                             title="Increase quantity"
                           >
                             <Plus className="h-3.5 w-3.5" />
@@ -158,7 +158,7 @@ function CartPanel() {
               </ul>
 
               {/* Footer */}
-              <div className="border-t border-gray-100 px-6 py-4">
+              <div className="border-t border-slate-100 px-6 py-4">
                 <div className="flex items-baseline justify-between">
                   <p className="text-sm font-medium text-slate-500">Subtotal</p>
                   <p className="text-xl font-extrabold text-slate-900">
@@ -178,7 +178,7 @@ function CartPanel() {
                   <Link
                     to="/checkout"
                     onClick={closeCart}
-                    className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-indigo-600 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
+                    className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-blue-600 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
                   >
                     Checkout
                     <ArrowRight className="h-4 w-4" />

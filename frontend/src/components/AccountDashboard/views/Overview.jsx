@@ -92,30 +92,30 @@ function Overview({ onNavigate }) {
 
   return (
     <div>
-      <h2 className="mb-6 text-2xl font-bold text-gray-900">Account overview</h2>
+      <h2 className="mb-6 text-2xl font-bold text-slate-900">Account overview</h2>
 
       {/* Stats Grid */}
       <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-4">
         {stats.map((stat) => (
           <div
             key={stat.label}
-            className="flex flex-col items-center justify-center rounded-xl border border-gray-200 bg-white p-6 text-center"
+            className="flex flex-col items-center justify-center rounded-xl border border-slate-200 bg-white p-6 text-center"
           >
-            <p className="text-3xl font-bold text-gray-900">
+            <p className="text-3xl font-bold text-slate-900">
               {stat.label === "Wishlist items" ? count : stat.value}
             </p>
-            <p className="mt-1 text-sm text-gray-500">{stat.label}</p>
+            <p className="mt-1 text-sm text-slate-500">{stat.label}</p>
           </div>
         ))}
       </div>
 
       {/* Recent Orders */}
-      <div className="overflow-hidden rounded-xl border border-gray-200 bg-white">
-        <div className="flex items-center justify-between border-b border-gray-200 p-4">
-          <p className="font-semibold text-gray-900">Recent orders</p>
+      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+        <div className="flex items-center justify-between border-b border-slate-200 p-4">
+          <p className="font-semibold text-slate-900">Recent orders</p>
           <button
             onClick={() => onNavigate && onNavigate("orders")}
-            className="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-700"
+            className="text-sm font-medium text-blue-600 transition-colors hover:text-blue-700"
           >
             View all
           </button>
@@ -124,7 +124,7 @@ function Overview({ onNavigate }) {
         {recentOrders.map((order) => (
           <div
             key={order.key}
-            className="flex items-center justify-between border-b border-gray-100 p-4 last:border-b-0"
+            className="flex items-center justify-between border-b border-slate-100 p-4 last:border-b-0"
           >
             <div className="flex items-center gap-3">
               <img
@@ -133,15 +133,15 @@ function Overview({ onNavigate }) {
                 className="h-12 w-12 rounded-lg object-cover"
               />
               <div>
-                <p className="font-medium text-gray-900">
+                <p className="font-medium text-slate-900">
                   {order.title}
                   {order.extraCount > 0 && (
-                    <span className="ml-1 text-sm font-normal text-gray-400">
+                    <span className="ml-1 text-sm font-normal text-slate-400">
                       +{order.extraCount} more
                     </span>
                   )}
                 </p>
-                <p className="text-sm text-gray-500">{order.meta}</p>
+                <p className="text-sm text-slate-500">{order.meta}</p>
               </div>
             </div>
 
@@ -151,12 +151,12 @@ function Overview({ onNavigate }) {
               >
                 {order.status}
               </span>
-              <span className="text-sm font-bold text-gray-900">{order.price}</span>
+              <span className="text-sm font-bold text-slate-900">{order.price}</span>
             </div>
           </div>
         ))}
 
-        <div className="flex items-center gap-1 px-4 py-3 text-xs text-gray-400">
+        <div className="flex items-center gap-1 px-4 py-3 text-xs text-slate-400">
           <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
           Rated 4.8 across {recentOrders.length} recent orders
         </div>

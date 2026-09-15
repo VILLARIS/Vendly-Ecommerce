@@ -48,19 +48,19 @@ function AccountDashboard() {
   };
 
   return (
-    <div className="bg-gray-50 py-8">
-      <div className="mx-auto max-w-7xl px-4">
+    <div className="bg-slate-50 py-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-6 lg:grid-cols-4">
           {/* Sidebar */}
-          <aside className="h-fit rounded-2xl border border-gray-200 bg-white p-6 lg:col-span-1">
+          <aside className="h-fit rounded-2xl border border-slate-200 bg-white p-6 lg:col-span-1">
             {/* Profile */}
-            <div className="mb-4 flex items-center gap-3 border-b border-gray-100 pb-4">
-              <div className="grid size-12 shrink-0 place-items-center rounded-full bg-indigo-100 text-indigo-600">
+            <div className="mb-4 flex items-center gap-3 border-b border-slate-100 pb-4">
+              <div className="grid size-12 shrink-0 place-items-center rounded-full bg-blue-100 text-blue-600">
                 <span className="font-bold">FT</span>
               </div>
               <div className="min-w-0">
-                <p className="truncate font-semibold text-gray-900">Farid Tabare</p>
-                <p className="truncate text-sm text-gray-500">farid@example.com</p>
+                <p className="truncate font-semibold text-slate-900">Farid Tabare</p>
+                <p className="truncate text-sm text-slate-500">farid@example.com</p>
               </div>
             </div>
 
@@ -75,8 +75,8 @@ function AccountDashboard() {
                     onClick={() => selectTab(item.key)}
                     className={
                       isActive
-                        ? "flex items-center gap-3 rounded-lg bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-700"
-                        : "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-700 transition-all hover:bg-gray-50 hover:text-gray-900"
+                        ? "flex items-center gap-3 rounded-lg bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700"
+                        : "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-all hover:bg-slate-50 hover:text-slate-900"
                     }
                   >
                     <Icon className="h-5 w-5" />
@@ -86,7 +86,7 @@ function AccountDashboard() {
               })}
 
               {/* Log out */}
-              <button className="mt-4 flex items-center gap-3 rounded-lg border-t border-gray-100 px-3 py-2 pt-4 text-sm font-medium text-red-600 transition-all hover:bg-red-50">
+              <button className="mt-4 flex items-center gap-3 rounded-lg border-t border-slate-100 px-3 py-2 pt-4 text-sm font-medium text-red-600 transition-all hover:bg-red-50">
                 <LogOut className="h-5 w-5" />
                 Log out
               </button>

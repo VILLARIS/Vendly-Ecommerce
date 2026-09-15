@@ -43,7 +43,7 @@ function Hero() {
             {/* Search */}
             <form
               onSubmit={(e) => e.preventDefault()}
-              className="mt-8 flex max-w-md items-center rounded-xl border border-gray-200 bg-white py-2 pl-4 pr-2 shadow-sm shadow-slate-900/5 focus-within:border-blue-400 focus-within:ring-4 focus-within:ring-blue-500/10"
+              className="mt-8 flex max-w-md items-center rounded-xl border border-slate-200 bg-white py-2 pl-4 pr-2 shadow-sm shadow-slate-900/5 focus-within:border-blue-400 focus-within:ring-4 focus-within:ring-blue-500/10"
             >
               <Search className="h-[18px] w-[18px] shrink-0 text-slate-400" />
               <input
@@ -97,11 +97,11 @@ function Hero() {
 
           {/* Secondary badges */}
           <div className="absolute right-[10%] top-[45%] z-20 flex flex-col items-end gap-1.5">
-            <span className="flex items-center gap-1.5 rounded-full border border-gray-100/80 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-sm">
+            <span className="flex items-center gap-1.5 rounded-full border border-slate-100/80 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-sm">
               <Truck className="h-3.5 w-3.5 text-blue-600" />
               Free shipping
             </span>
-            <span className="flex items-center gap-1.5 rounded-full border border-gray-100/80 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-sm">
+            <span className="flex items-center gap-1.5 rounded-full border border-slate-100/80 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-sm">
               <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
               Top rated
             </span>

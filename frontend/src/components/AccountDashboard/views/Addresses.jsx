@@ -49,7 +49,7 @@ const labelIcon = (label) =>
 const emptyForm = { label: "", street: "", city: "", country: "" };
 
 const inputClass =
-  "w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100";
+  "w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-100";
 
 function Addresses() {
   const [addresses, setAddresses] = useState(() => {
@@ -164,12 +164,12 @@ function Addresses() {
     <div>
       <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Saved addresses</h2>
-          <p className="mt-1 text-sm text-gray-500">
+          <h2 className="text-2xl font-bold text-slate-900">Saved addresses</h2>
+          <p className="mt-1 text-sm text-slate-500">
             Manage the shipping addresses used for your orders.
           </p>
         </div>
-        <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-gray-500 ring-1 ring-gray-200">
+        <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-500 ring-1 ring-slate-200">
           {addresses.length} saved
         </span>
       </div>
@@ -180,24 +180,24 @@ function Addresses() {
           return (
             <div
               key={address.id}
-              className="group rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:shadow-md hover:shadow-gray-200/70"
+              className="group rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:shadow-md hover:shadow-slate-200/70"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <span className="grid size-10 place-items-center rounded-xl bg-indigo-50 text-indigo-600">
+                  <span className="grid size-10 place-items-center rounded-xl bg-blue-50 text-blue-600">
                     <Icon className="h-5 w-5" />
                   </span>
                   <p className="font-bold text-slate-900">{address.label}</p>
                 </div>
                 {address.isDefault && (
-                  <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-xs font-semibold text-indigo-700">
+                  <span className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-700">
                     Default
                   </span>
                 )}
               </div>
 
               <div className="mt-5 flex items-start gap-2.5">
-                <MapPin className="mt-1 h-4 w-4 shrink-0 text-slate-300 transition-colors group-hover:text-indigo-400" />
+                <MapPin className="mt-1 h-4 w-4 shrink-0 text-slate-300 transition-colors group-hover:text-blue-400" />
                 <div className="text-sm leading-relaxed text-slate-600">
                   <p>{address.street}</p>
                   <p>{address.city}</p>
@@ -205,10 +205,10 @@ function Addresses() {
                 </div>
               </div>
 
-              <div className="mt-5 flex gap-2 border-t border-gray-100 pt-4">
+              <div className="mt-5 flex gap-2 border-t border-slate-100 pt-4">
                 <button
                   onClick={() => openEdit(address)}
-                  className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-indigo-600 transition-all hover:bg-indigo-50"
+                  className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-blue-600 transition-all hover:bg-blue-50"
                 >
                   <Pencil className="h-3.5 w-3.5" />
                   Edit
@@ -227,15 +227,15 @@ function Addresses() {
 
         <button
           onClick={openCreate}
-          className={`group flex min-h-[170px] w-full flex-col items-center justify-center gap-2.5 rounded-2xl border-2 border-dashed border-gray-300 p-6 text-slate-500 transition-all hover:border-indigo-400 hover:bg-indigo-50/50 hover:text-indigo-600 ${
+          className={`group flex min-h-[170px] w-full flex-col items-center justify-center gap-2.5 rounded-2xl border-2 border-dashed border-slate-300 p-6 text-slate-500 transition-all hover:border-blue-400 hover:bg-blue-50/50 hover:text-blue-600 ${
             addresses.length === 0 ? "md:col-span-2" : ""
           }`}
         >
-          <span className="grid size-12 place-items-center rounded-full bg-gray-100 transition-all group-hover:scale-110 group-hover:bg-white">
+          <span className="grid size-12 place-items-center rounded-full bg-slate-100 transition-all group-hover:scale-110 group-hover:bg-white">
             <Plus className="h-6 w-6" />
           </span>
           <span className="text-sm font-semibold">Add new address</span>
-          <span className="text-xs text-slate-400 transition-colors group-hover:text-indigo-500">
+          <span className="text-xs text-slate-400 transition-colors group-hover:text-blue-500">
             Creates a new shipping address
           </span>
         </button>
@@ -247,16 +247,16 @@ function Addresses() {
           <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl">
             <div className="mb-5 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <span className="grid size-10 place-items-center rounded-xl bg-indigo-50 text-indigo-600">
+                <span className="grid size-10 place-items-center rounded-xl bg-blue-50 text-blue-600">
                   <MapPin className="h-5 w-5" />
                 </span>
-                <h3 className="text-lg font-bold text-gray-900">
+                <h3 className="text-lg font-bold text-slate-900">
                   {editing ? "Edit address" : "Add new address"}
                 </h3>
               </div>
               <button
                 onClick={closeModal}
-                className="grid size-8 place-items-center rounded-lg text-gray-400 transition-all hover:bg-gray-100 hover:text-gray-600"
+                className="grid size-8 place-items-center rounded-lg text-slate-400 transition-all hover:bg-slate-100 hover:text-slate-600"
                 title="Close"
               >
                 <X className="h-5 w-5" />
@@ -265,7 +265,7 @@ function Addresses() {
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div>
-                <span className="mb-1.5 block text-sm font-semibold text-gray-700">Label</span>
+                <span className="mb-1.5 block text-sm font-semibold text-slate-700">Label</span>
                 <div className="grid grid-cols-3 gap-2">
                   {visibleCategories.map((cat) => {
                     const Icon = cat.icon;
@@ -279,8 +279,8 @@ function Addresses() {
                         }
                         className={`flex flex-col items-center gap-1.5 rounded-xl border px-2 py-3 text-xs font-medium transition-all ${
                           selected
-                            ? "border-indigo-600 bg-indigo-50 text-indigo-700"
-                            : "border-gray-200 text-gray-600 hover:border-indigo-300 hover:bg-gray-50"
+                            ? "border-blue-600 bg-blue-50 text-blue-700"
+                            : "border-slate-200 text-slate-600 hover:border-blue-300 hover:bg-slate-50"
                         }`}
                       >
                         <Icon className="h-5 w-5" />
@@ -292,7 +292,7 @@ function Addresses() {
               </div>
 
               <div>
-                <label className="mb-1.5 block text-sm font-semibold text-gray-700">
+                <label className="mb-1.5 block text-sm font-semibold text-slate-700">
                   Street address
                 </label>
                 <input
@@ -305,7 +305,7 @@ function Addresses() {
               </div>
 
               <div>
-                <label className="mb-1.5 block text-sm font-semibold text-gray-700">
+                <label className="mb-1.5 block text-sm font-semibold text-slate-700">
                   City / State / ZIP
                 </label>
                 <input
@@ -318,7 +318,7 @@ function Addresses() {
               </div>
 
               <div>
-                <label className="mb-1.5 block text-sm font-semibold text-gray-700">
+                <label className="mb-1.5 block text-sm font-semibold text-slate-700">
                   Country
                 </label>
                 <input
@@ -330,17 +330,17 @@ function Addresses() {
                 />
               </div>
 
-              <div className="mt-3 flex justify-end gap-3 border-t border-gray-100 pt-4">
+              <div className="mt-3 flex justify-end gap-3 border-t border-slate-100 pt-4">
                 <button
                   type="button"
                   onClick={closeModal}
-                  className="rounded-lg px-4 py-2 text-sm font-semibold text-gray-700 transition-all hover:bg-gray-100"
+                  className="rounded-lg px-4 py-2 text-sm font-semibold text-slate-700 transition-all hover:bg-slate-100"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="rounded-lg bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-sm shadow-indigo-600/30 transition-all hover:bg-indigo-700"
+                  className="rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-sm shadow-blue-600/30 transition-all hover:bg-blue-700"
                 >
                   {editing ? "Save changes" : "Add address"}
                 </button>
@@ -357,7 +357,7 @@ function Addresses() {
             <div className="flex items-start gap-4">
               <span
                 className={`grid size-11 shrink-0 place-items-center rounded-full ${
-                  confirm.type === "delete" ? "bg-red-50 text-red-600" : "bg-indigo-50 text-indigo-600"
+                  confirm.type === "delete" ? "bg-red-50 text-red-600" : "bg-blue-50 text-blue-600"
                 }`}
               >
                 {confirm.type === "delete" ? (
@@ -367,16 +367,16 @@ function Addresses() {
                 )}
               </span>
               <div>
-                <h3 className="text-base font-bold text-gray-900">{confirmTitle}</h3>
-                <p className="mt-1 text-sm text-gray-500">{confirmText}</p>
+                <h3 className="text-base font-bold text-slate-900">{confirmTitle}</h3>
+                <p className="mt-1 text-sm text-slate-500">{confirmText}</p>
               </div>
             </div>
 
-            <div className="mt-4 rounded-lg bg-gray-50 p-3 ring-1 ring-gray-100">
-              <p className="text-sm font-semibold text-gray-800">
+            <div className="mt-4 rounded-lg bg-slate-50 p-3 ring-1 ring-slate-100">
+              <p className="text-sm font-semibold text-slate-800">
                 {(confirm.type === "delete" ? confirm.address : form).label}
               </p>
-              <p className="mt-0.5 line-clamp-1 text-sm text-gray-400">
+              <p className="mt-0.5 line-clamp-1 text-sm text-slate-400">
                 {(confirm.type === "delete" ? confirm.address : form).street} ·{" "}
                 {(confirm.type === "delete" ? confirm.address : form).city}
               </p>
@@ -385,7 +385,7 @@ function Addresses() {
             <div className="mt-5 flex justify-end gap-3">
               <button
                 onClick={() => setConfirm(null)}
-                className="rounded-lg px-4 py-2 text-sm font-semibold text-gray-700 transition-all hover:bg-gray-100"
+                className="rounded-lg px-4 py-2 text-sm font-semibold text-slate-700 transition-all hover:bg-slate-100"
               >
                 Cancel
               </button>
@@ -394,7 +394,7 @@ function Addresses() {
                 className={`rounded-lg px-5 py-2 text-sm font-semibold text-white shadow-sm transition-all ${
                   confirm.type === "delete"
                     ? "bg-red-600 shadow-red-600/30 hover:bg-red-700"
-                    : "bg-indigo-600 shadow-indigo-600/30 hover:bg-indigo-700"
+                    : "bg-blue-600 shadow-blue-600/30 hover:bg-blue-700"
                 }`}
               >
                 {confirmAction}
