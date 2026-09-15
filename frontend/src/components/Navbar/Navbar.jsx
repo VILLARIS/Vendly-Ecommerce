@@ -88,13 +88,6 @@ function Navbar() {
             <Link to="/account" className={iconButton} title="Account">
               <User className="h-5 w-5" />
             </Link>
-
-            <Link
-              to="/account"
-              className="ml-1 hidden rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 hover:shadow lg:inline-block"
-            >
-              Sell on Vendly
-            </Link>
           </div>
         </div>
       </div>

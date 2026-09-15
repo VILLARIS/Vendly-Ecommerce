@@ -6,8 +6,6 @@ import Hero from "./components/Hero/Hero";
 import PopularCategories from "./components/PopularCategories/PopularCategories";
 import DealsSection from "./components/DealsSection/DealsSection";
 import MarketplaceSection from "./components/MarketplaceSection/MarketplaceSection";
-import PopularSellers from "./components/PopularSellers/PopularSellers";
-import CallToActionBanner from "./components/CallToActionBanner/CallToActionBanner";
 import Footer from "./components/Footer/Footer";
 import AccountDashboard from "./components/AccountDashboard/AccountDashboard";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
@@ -23,8 +21,6 @@ function Home() {
       <PopularCategories />
       <DealsSection />
       <MarketplaceSection />
-      <PopularSellers />
-      <CallToActionBanner />
       <Footer />
     </>
   );

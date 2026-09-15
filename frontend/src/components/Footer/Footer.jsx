@@ -6,10 +6,6 @@ const columns = [
     links: ["Categories", "Deals", "New Arrivals", "Best Sellers"],
   },
   {
-    title: "Sell",
-    links: ["Sell on Vendly", "Seller Dashboard", "Seller Policies", "Seller Resources"],
-  },
-  {
     title: "Help",
     links: ["Help Center", "Track Order", "Returns", "Contact Us"],
   },
@@ -39,9 +35,9 @@ const payments = ["Visa", "Mastercard", "PayPal", "Apple Pay", "G Pay"];
 function Footer() {
   return (
     <footer className="bg-[#0f172a] pb-8 pt-16">
-      <div className="mx-auto max-w-7xl px-4">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Links Grid */}
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="max-w-xs">
             <div className="flex items-center gap-2">
@@ -59,13 +55,25 @@ function Footer() {
               Everything you need, all in one place.
             </p>
 
+            {/* Newsletter */}
+            <div className="mt-5 flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-800/50 p-1.5 pl-3">
+              <input
+                type="email"
+                placeholder="Your email"
+                className="w-full min-w-0 bg-transparent text-sm text-white outline-none placeholder:text-slate-500"
+              />
+              <button className="shrink-0 rounded-lg bg-blue-600 px-3.5 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                Subscribe
+              </button>
+            </div>
+
             <div className="mt-5 flex items-center gap-3">
               {socials.map((social) => (
                 <a
                   key={social.label}
                   href="#"
                   aria-label={social.label}
-                  className="grid size-9 place-items-center rounded-full border border-slate-700 text-slate-400 transition-colors hover:border-purple-500 hover:text-purple-400"
+                  className="grid size-9 place-items-center rounded-full border border-slate-700 text-slate-400 transition-colors hover:border-blue-500/70 hover:text-blue-400"
                 >
                   <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
                     <path d={social.path} />
